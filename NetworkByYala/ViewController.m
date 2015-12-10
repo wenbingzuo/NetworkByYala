@@ -21,6 +21,8 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 
+    AFURLSessionManager *manager;
+
 }
 
 - (void)didReceiveMemoryWarning {
