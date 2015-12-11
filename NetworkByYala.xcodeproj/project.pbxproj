@@ -13,6 +13,8 @@
 		8D9FBE311C16EED30077A9B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2F1C16EED30077A9B4 /* Main.storyboard */; };
 		8D9FBE331C16EED30077A9B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D9FBE321C16EED30077A9B4 /* Assets.xcassets */; };
 		8D9FBE361C16EED30077A9B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D9FBE341C16EED30077A9B4 /* LaunchScreen.storyboard */; };
+		8DE1C6FC1C1AE0AB00D3F99F /* DZBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE1C6FB1C1AE0AB00D3F99F /* DZBaseRequest.m */; };
+		8DE1C7011C1AED3300D3F99F /* DZRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE1C7001C1AED3300D3F99F /* DZRequestManager.m */; };
 		FEA5537A9225A2ED38874AEA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 198AAFB0356B4ECCFCB9B90C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +32,12 @@
 		8D9FBE321C16EED30077A9B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D9FBE351C16EED30077A9B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D9FBE371C16EED30077A9B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DE1C6FA1C1AE0AB00D3F99F /* DZBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZBaseRequest.h; sourceTree = "<group>"; };
+		8DE1C6FB1C1AE0AB00D3F99F /* DZBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZBaseRequest.m; sourceTree = "<group>"; };
+		8DE1C6FD1C1AE0C200D3F99F /* DZRequestConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZRequestConfig.h; sourceTree = "<group>"; };
+		8DE1C6FE1C1AE20600D3F99F /* DZRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZRequest.h; sourceTree = "<group>"; };
+		8DE1C6FF1C1AED3300D3F99F /* DZRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRequestManager.h; sourceTree = "<group>"; };
+		8DE1C7001C1AED3300D3F99F /* DZRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRequestManager.m; sourceTree = "<group>"; };
 		A32007220A27A117C8087927 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +64,12 @@
 		8D81D3BE1C16F07900BB89D2 /* NetworkClient */ = {
 			isa = PBXGroup;
 			children = (
+				8DE1C6FA1C1AE0AB00D3F99F /* DZBaseRequest.h */,
+				8DE1C6FB1C1AE0AB00D3F99F /* DZBaseRequest.m */,
+				8DE1C6FF1C1AED3300D3F99F /* DZRequestManager.h */,
+				8DE1C7001C1AED3300D3F99F /* DZRequestManager.m */,
+				8DE1C6FD1C1AE0C200D3F99F /* DZRequestConfig.h */,
+				8DE1C6FE1C1AE20600D3F99F /* DZRequest.h */,
 			);
 			path = NetworkClient;
 			sourceTree = "<group>";
@@ -242,9 +256,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DE1C6FC1C1AE0AB00D3F99F /* DZBaseRequest.m in Sources */,
 				8D9FBE2E1C16EED30077A9B4 /* ViewController.m in Sources */,
 				8D9FBE2B1C16EED30077A9B4 /* AppDelegate.m in Sources */,
 				8D9FBE281C16EED30077A9B4 /* main.m in Sources */,
+				8DE1C7011C1AED3300D3F99F /* DZRequestManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
