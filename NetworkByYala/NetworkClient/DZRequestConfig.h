@@ -31,6 +31,12 @@ typedef NS_ENUM(NSInteger, DZRequestMethod) {
     DZRequestMethodDelete
 };
 
+typedef NS_ENUM(NSInteger, DZRequestSerializerType) {
+    DZRequestSerializerTypeForm,
+    DZRequestSerializerTypeJSON
+};
+
+
 /**
  *  基类URL的定义
  */
@@ -45,6 +51,13 @@ typedef NS_ENUM(NSInteger, DZRequestMethod) {
     #define DZ_BASE_URL                             @"DEVELOPMENT_API"
 #else
     #define DZ_BASE_URL                             @"NO_API"
+#endif
+
+
+#ifdef DEBUG
+    #define DZDebugLog(...) NSLog(__VA_ARGS__)
+#else
+    #define DZDebugLog(...)
 #endif
 
 

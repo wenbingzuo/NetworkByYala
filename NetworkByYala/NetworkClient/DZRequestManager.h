@@ -13,7 +13,8 @@
 
 + (instancetype)shareManager;
 
-- (void)addRequest:(DZBaseRequest *)request;
+- (void)startRequest:(DZBaseRequest *)request;
 - (void)cancelRequest:(DZBaseRequest *)request;
+- (void)cancelAllRequests;
 
 @end

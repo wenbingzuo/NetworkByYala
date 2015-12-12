@@ -14,13 +14,37 @@ typedef void(^DZRequestFailureBlock)(DZBaseRequest *request);
 
 @interface DZBaseRequest : NSObject
 
-@property (nonatomic, copy) DZRequestSuccessBlock requestSuccessBlock;
-@property (nonatomic, copy) DZRequestFailureBlock requestFailureBlock;
+@property (nonatomic, strong) NSURLSessionDataTask *task;
 
+@property (nonatomic, copy) DZRequestSuccessBlock requestSuccessBlock;
+@property (nonatomic, strong) id responseObject;
+
+@property (nonatomic, copy) DZRequestFailureBlock requestFailureBlock;
+@property (nonatomic, strong) NSError *error;
+
+/**
+ *  基类URL，可无
+ *
+ */
 - (NSString *)baseURL;
-- (NSString *)extendedURL;
+
+/**
+ *  请求的url
+ *
+ */
+- (NSString *)requestURL;
 - (DZRequestMethod)requestMethod;
 - (id)requestParameters;
+- (DZRequestSerializerType)requestSerializerType;
 
+
+/**
+ *  复写时需要调用super
+ */
+- (void)start;
+- (void)stop;
+
+
+- (void)clearRequestBlock;
 
 @end

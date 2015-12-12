@@ -8,6 +8,7 @@
 
 #import "DZBaseRequest.h"
 #import "DZRequestConfig.h"
+#import "DZRequestManager.h"
 
 @implementation DZBaseRequest
 
@@ -19,4 +20,32 @@
     return DZRequestMethodGet;
 }
 
+- (NSString *)requestURL {
+    return @"";
+}
+
+- (id)requestParameters {
+    return nil;
+}
+
+- (DZRequestSerializerType)requestSerializerType {
+    return DZRequestSerializerTypeJSON;
+}
+
+- (void)start {
+    [[DZRequestManager shareManager] startRequest:self];
+}
+
+- (void)stop {
+    [[DZRequestManager shareManager] cancelRequest:self];
+}
+
+- (void)dealloc {
+    DZDebugLog(@"%@ dealloc", [self class]);
+}
+
+- (void)clearRequestBlock {
+    self.requestSuccessBlock = nil;
+    self.requestFailureBlock = nil;
+}
 @end
