@@ -39,24 +39,32 @@
     return @"";
 }
 
+- (void)handleReponseResult {
+    
+}
 
 #pragma mark - Public
 - (void)addRequest:(DZBaseRequest *)request {
     NSString *url = [self configRequestURL:request];
     
+    id params = [request requestParameters];
+    
     DZRequestMethod requestMethod = [request requestMethod];
     switch (requestMethod) {
         case DZRequestMethodGet:
         {
-            [self.sessionManager GET:url parameters:<#(nullable id)#> progress:<#^(NSProgress * _Nonnull downloadProgress)downloadProgress#> success:<#^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)success#> failure:<#^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)failure#>]
+            
+            [self.sessionManager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                
+            }];
         }
             break;
             
         default:
             break;
     }
-    
-    NSString *url = [self configRequestURL];
     
 }
 

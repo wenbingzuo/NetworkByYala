@@ -14,14 +14,13 @@ typedef void(^DZRequestFailureBlock)(DZBaseRequest *request);
 
 @interface DZBaseRequest : NSObject
 
-@property (nonatomic, copy) NSString *baseURL;
-@property (nonatomic, copy) NSString *extendedURL;
-
 @property (nonatomic, copy) DZRequestSuccessBlock requestSuccessBlock;
 @property (nonatomic, copy) DZRequestFailureBlock requestFailureBlock;
 
 - (NSString *)baseURL;
 - (NSString *)extendedURL;
 - (DZRequestMethod)requestMethod;
+- (id)requestParameters;
+
 
 @end

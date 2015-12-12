@@ -10,11 +10,6 @@
 #define DZRequestConfig_h
 
 /**
- *  对于是否添加属性的问题，添加属性增加了内存占有量，注意
- *
- */
-
-/**
  *  HTTP请求方式
  */
 typedef NS_ENUM(NSInteger, DZRequestMethod) {
