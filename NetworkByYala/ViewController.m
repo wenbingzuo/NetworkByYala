@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "DZTestGet.h"
 #import "DZTestPost.h"
-#import "DZOSChinaTest.h"
 #import "DZTestUpload.h"
 
 @interface ViewController () <DZRequestDelegate>
@@ -23,20 +22,6 @@
     [super viewDidLoad];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testNotification:) name:DZRequestDidFinishNotification object:nil];
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-
-//    DZTest *test = [DZTest new];
-//    [test start];
-    DZOSChinaTest *tst = [DZOSChinaTest new];
-    [tst setRequestSuccessBlock:^(DZBaseRequest *request) {
-        DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
-    }];
-    [tst setRequestFailureBlock:^(DZBaseRequest *request) {
-        DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
-    }];
-    [tst start];
 }
 
 - (void)didReceiveMemoryWarning {

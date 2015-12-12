@@ -43,6 +43,10 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.fin
     return DZRequestSerializerTypeJSON;
 }
 
+- (DZResponseSerializerType)responseSerializerType {
+    return DZResponseSerializerTypeJSON;
+}
+
 - (void)start {
     [[DZRequestManager shareManager] startRequest:self];
 }

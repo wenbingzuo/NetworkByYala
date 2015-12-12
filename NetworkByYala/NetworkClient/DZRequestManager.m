@@ -162,7 +162,7 @@
     // 处理参数
     id params = [request requestParameters];
     if ([request requestSerializerType] == DZRequestSerializerTypeJSON) {
-        if (![DZRequestTool validateJSON:params]) {
+        if (![NSJSONSerialization isValidJSONObject:params] && params) {
             DZDebugLog(@"参数json出错：%@", params);
             return;
         }
@@ -176,6 +176,17 @@
             break;
         case DZRequestSerializerTypeJSON:
             self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+        default:
+            break;
+    }
+    DZResponseSerializerType responseSerializerType = [request responseSerializerType];
+    switch (responseSerializerType) {
+        case DZResponseSerializerTypeJSON:
+            self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+            break;
+        case DZResponseSerializerTypeXML:
+            self.sessionManager.responseSerializer = [AFXMLParserResponseSerializer serializer];
+            break;
         default:
             break;
     }

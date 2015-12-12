@@ -50,6 +50,7 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 - (id)requestParameters;
 
 - (DZRequestSerializerType)requestSerializerType;
+- (DZResponseSerializerType)responseSerializerType;
 
 - (BOOL)useCookies;
 

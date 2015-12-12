@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D0DF2191C1BC82B00B54434 /* DZOSChinaTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF2181C1BC82B00B54434 /* DZOSChinaTest.m */; };
 		8D0DF23F1C1BDE0400B54434 /* DZTestGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF23E1C1BDE0400B54434 /* DZTestGet.m */; };
 		8D0DF2421C1BDEEE00B54434 /* DZTestPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF2411C1BDEEE00B54434 /* DZTestPost.m */; };
 		8D0DF2471C1C31FF00B54434 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8D0DF2461C1C31FF00B54434 /* images.jpeg */; };
@@ -27,8 +26,6 @@
 /* Begin PBXFileReference section */
 		0F278F67804B911D80F96077 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		198AAFB0356B4ECCFCB9B90C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D0DF2171C1BC82B00B54434 /* DZOSChinaTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZOSChinaTest.h; sourceTree = "<group>"; };
-		8D0DF2181C1BC82B00B54434 /* DZOSChinaTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZOSChinaTest.m; sourceTree = "<group>"; };
 		8D0DF23D1C1BDE0400B54434 /* DZTestGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTestGet.h; sourceTree = "<group>"; };
 		8D0DF23E1C1BDE0400B54434 /* DZTestGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTestGet.m; sourceTree = "<group>"; };
 		8D0DF2401C1BDEEE00B54434 /* DZTestPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTestPost.h; sourceTree = "<group>"; };
@@ -134,8 +131,6 @@
 				8D0DF2411C1BDEEE00B54434 /* DZTestPost.m */,
 				8D0DF2481C1C34CB00B54434 /* DZTestUpload.h */,
 				8D0DF2491C1C34CB00B54434 /* DZTestUpload.m */,
-				8D0DF2171C1BC82B00B54434 /* DZOSChinaTest.h */,
-				8D0DF2181C1BC82B00B54434 /* DZOSChinaTest.m */,
 				8D9FBE2F1C16EED30077A9B4 /* Main.storyboard */,
 				8D9FBE321C16EED30077A9B4 /* Assets.xcassets */,
 				8D9FBE341C16EED30077A9B4 /* LaunchScreen.storyboard */,
@@ -286,7 +281,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DE1C6FC1C1AE0AB00D3F99F /* DZBaseRequest.m in Sources */,
-				8D0DF2191C1BC82B00B54434 /* DZOSChinaTest.m in Sources */,
 				8D9FBE2E1C16EED30077A9B4 /* ViewController.m in Sources */,
 				8D0DF2421C1BDEEE00B54434 /* DZTestPost.m in Sources */,
 				8D0DF23F1C1BDE0400B54434 /* DZTestGet.m in Sources */,

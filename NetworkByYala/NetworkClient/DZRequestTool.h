@@ -12,6 +12,5 @@
 
 + (BOOL)validateUrl:(NSString *)url;
 
-+ (BOOL)validateJSON:(id)json;
 
 @end

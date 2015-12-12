@@ -19,7 +19,6 @@
 
 - (id)requestParameters {
     return @{@"phone":@"17710280827", @"password":@"123456"};
-//    return @"123";
 }
 
 - (DZRequestMethod)requestMethod {

@@ -18,62 +18,120 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1B-ff-oy5">
-                                <rect key="frame" x="285" y="92" width="30" height="30"/>
+                                <rect key="frame" x="51" y="57" width="30" height="30"/>
                                 <state key="normal" title="GET"/>
                                 <connections>
                                     <action selector="sendGETRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GEC-gi-2uk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M69-vs-miw">
-                                <rect key="frame" x="280" y="171" width="40" height="30"/>
+                                <rect key="frame" x="105" y="57" width="40" height="30"/>
                                 <state key="normal" title="POST"/>
                                 <connections>
                                     <action selector="sendPOSTRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WWT-0C-ZeD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCk-kN-Xfh">
-                                <rect key="frame" x="285" y="250" width="30" height="30"/>
+                                <rect key="frame" x="161" y="57" width="30" height="30"/>
                                 <state key="normal" title="PUT"/>
                                 <connections>
                                     <action selector="sendPUTRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cOT-ct-3SM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCj-Lc-m1Y">
-                                <rect key="frame" x="273" y="320" width="55" height="30"/>
+                                <rect key="frame" x="216" y="57" width="55" height="30"/>
                                 <state key="normal" title="DELETE"/>
                                 <connections>
                                     <action selector="sendDELETERequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xp0-8z-ff9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtO-AL-wJF">
-                                <rect key="frame" x="277" y="376" width="47" height="30"/>
+                                <rect key="frame" x="102" y="103" width="47" height="30"/>
                                 <state key="normal" title="upload"/>
                                 <connections>
                                     <action selector="sendDownloadRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HuB-uJ-h0I"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4So-q2-sI3">
-                                <rect key="frame" x="225" y="455" width="150" height="2"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="6H6-bf-wdY"/>
-                                    <constraint firstAttribute="width" constant="150" id="XKR-vS-GDb"/>
-                                </constraints>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4So-q2-sI3">
+                                <rect key="frame" x="78" y="30" width="150" height="2"/>
                             </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JSON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2N-jW-RLJ">
+                                <rect key="frame" x="17" y="20" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvi-ff-Agn">
+                                <rect key="frame" x="102" y="246" width="47" height="30"/>
+                                <state key="normal" title="upload"/>
+                                <connections>
+                                    <action selector="sendDownloadRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Zq-sH-5Ow"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Boq-mj-lUv">
+                                <rect key="frame" x="105" y="200" width="40" height="30"/>
+                                <state key="normal" title="POST"/>
+                                <connections>
+                                    <action selector="sendPOSTRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OcO-Im-m01"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="spf-gD-bHx">
+                                <rect key="frame" x="81" y="173" width="150" height="2"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnE-Br-dPF">
+                                <rect key="frame" x="51" y="200" width="30" height="30"/>
+                                <state key="normal" title="GET"/>
+                                <connections>
+                                    <action selector="sendGETRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="azt-Z2-340"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFZ-K4-psq">
+                                <rect key="frame" x="216" y="200" width="55" height="30"/>
+                                <state key="normal" title="DELETE"/>
+                                <connections>
+                                    <action selector="sendDELETERequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q8v-ib-V4m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHw-gL-UOY">
+                                <rect key="frame" x="161" y="200" width="30" height="30"/>
+                                <state key="normal" title="PUT"/>
+                                <connections>
+                                    <action selector="sendPUTRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="upI-si-bgW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XML" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWs-Se-GVR">
+                                <rect key="frame" x="22" y="163" width="35" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="M69-vs-miw" firstAttribute="top" secondItem="J1B-ff-oy5" secondAttribute="bottom" constant="49" id="2lK-rs-fPL"/>
-                            <constraint firstItem="HCj-Lc-m1Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4qf-7d-Kzo"/>
-                            <constraint firstItem="J1B-ff-oy5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="72" id="5VW-ef-GDG"/>
-                            <constraint firstItem="HCj-Lc-m1Y" firstAttribute="top" secondItem="cCk-kN-Xfh" secondAttribute="bottom" constant="40" id="FZp-UX-m79"/>
-                            <constraint firstItem="4So-q2-sI3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Og6-Uf-NK3"/>
-                            <constraint firstItem="M69-vs-miw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YQ2-xc-wEq"/>
-                            <constraint firstItem="J1B-ff-oy5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cB1-KK-M1G"/>
-                            <constraint firstItem="qtO-AL-wJF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cl3-fE-agV"/>
-                            <constraint firstItem="4So-q2-sI3" firstAttribute="top" secondItem="qtO-AL-wJF" secondAttribute="bottom" constant="49" id="hfb-vN-i8t"/>
-                            <constraint firstItem="qtO-AL-wJF" firstAttribute="top" secondItem="HCj-Lc-m1Y" secondAttribute="bottom" constant="26" id="jNc-eh-w1r"/>
-                            <constraint firstItem="cCk-kN-Xfh" firstAttribute="top" secondItem="M69-vs-miw" secondAttribute="bottom" constant="49" id="jor-vm-Edh"/>
-                            <constraint firstItem="cCk-kN-Xfh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tma-kC-vMj"/>
+                            <constraint firstItem="wvi-ff-Agn" firstAttribute="centerX" secondItem="Boq-mj-lUv" secondAttribute="centerX" id="6BU-Hr-poe"/>
+                            <constraint firstItem="qtO-AL-wJF" firstAttribute="top" secondItem="M69-vs-miw" secondAttribute="bottom" constant="16" id="AzU-ya-jA2"/>
+                            <constraint firstItem="HCj-Lc-m1Y" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="37" id="Dmz-Mr-8hH"/>
+                            <constraint firstItem="bFZ-K4-psq" firstAttribute="centerX" secondItem="HCj-Lc-m1Y" secondAttribute="centerX" id="Eeg-hE-GBz"/>
+                            <constraint firstItem="wvi-ff-Agn" firstAttribute="top" secondItem="Boq-mj-lUv" secondAttribute="bottom" constant="16" id="GuC-h6-NzZ"/>
+                            <constraint firstItem="J1B-ff-oy5" firstAttribute="top" secondItem="s2N-jW-RLJ" secondAttribute="bottom" constant="16" id="QHa-nu-BCS"/>
+                            <constraint firstItem="uHw-gL-UOY" firstAttribute="top" secondItem="cCk-kN-Xfh" secondAttribute="bottom" constant="113" id="RHr-Sg-dzY"/>
+                            <constraint firstItem="Boq-mj-lUv" firstAttribute="centerX" secondItem="M69-vs-miw" secondAttribute="centerX" id="WBP-qg-RJe"/>
+                            <constraint firstItem="s2N-jW-RLJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="Ym9-Ux-D99"/>
+                            <constraint firstItem="J1B-ff-oy5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="51" id="YoQ-Y4-A5L"/>
+                            <constraint firstItem="qtO-AL-wJF" firstAttribute="centerX" secondItem="M69-vs-miw" secondAttribute="centerX" id="ZBQ-i5-hsg"/>
+                            <constraint firstItem="uHw-gL-UOY" firstAttribute="centerX" secondItem="cCk-kN-Xfh" secondAttribute="centerX" id="aWy-l1-byH"/>
+                            <constraint firstItem="cCk-kN-Xfh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="37" id="azU-VR-7R0"/>
+                            <constraint firstItem="EnE-Br-dPF" firstAttribute="centerX" secondItem="J1B-ff-oy5" secondAttribute="centerX" id="bKl-xV-9F2"/>
+                            <constraint firstItem="EnE-Br-dPF" firstAttribute="top" secondItem="J1B-ff-oy5" secondAttribute="bottom" constant="113" id="f8c-Ns-bfV"/>
+                            <constraint firstItem="M69-vs-miw" firstAttribute="leading" secondItem="J1B-ff-oy5" secondAttribute="trailing" constant="24" id="i3y-Ik-oqP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bFZ-K4-psq" secondAttribute="bottom" constant="370" id="met-WJ-cdD"/>
+                            <constraint firstItem="cCk-kN-Xfh" firstAttribute="leading" secondItem="M69-vs-miw" secondAttribute="trailing" constant="16" id="nOf-tq-zeT"/>
+                            <constraint firstItem="HCj-Lc-m1Y" firstAttribute="leading" secondItem="cCk-kN-Xfh" secondAttribute="trailing" constant="25" id="nf3-XX-dM1"/>
+                            <constraint firstItem="M69-vs-miw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="37" id="qR4-Qw-LdF"/>
+                            <constraint firstItem="qWs-Se-GVR" firstAttribute="top" secondItem="J1B-ff-oy5" secondAttribute="bottom" constant="76" id="rFs-8D-BsP"/>
+                            <constraint firstItem="qWs-Se-GVR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="22" id="rvC-yu-A2e"/>
+                            <constraint firstItem="s2N-jW-RLJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="17" id="v6u-5a-2IG"/>
+                            <constraint firstItem="Boq-mj-lUv" firstAttribute="top" secondItem="M69-vs-miw" secondAttribute="bottom" constant="113" id="zWM-lT-6ya"/>
                         </constraints>
                     </view>
                     <connections>
@@ -82,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="364" y="399"/>
+            <point key="canvasLocation" x="366" y="399"/>
         </scene>
     </scenes>
 </document>

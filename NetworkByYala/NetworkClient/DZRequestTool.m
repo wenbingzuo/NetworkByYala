@@ -16,13 +16,4 @@
     return [urlTest evaluateWithObject:url];
 }
 
-+ (BOOL)validateJSON:(id)json {
-    if ([json isKindOfClass:[NSDictionary class]] || [json isKindOfClass:[NSArray class]]) {
-        return YES;
-    } else {
-        return NO;
-    }
-                            
-}
-
 @end
