@@ -9,19 +9,34 @@
 #import <Foundation/Foundation.h>
 
 @class DZBaseRequest;
-typedef void(^DZRequestSuccessBlock)(DZBaseRequest *request);
-typedef void(^DZRequestFailureBlock)(DZBaseRequest *request);
+@protocol DZRequestDelegate <NSObject>
+
+@optional
+- (void)requestDidSuccess:(DZBaseRequest *)request;
+- (void)requestDidFailure:(DZBaseRequest *)request;
+
+@end
 
 @interface DZBaseRequest : NSObject
 
 @property (nonatomic, strong) NSURLSessionDataTask *task;
 
-@property (nonatomic, copy) DZRequestSuccessBlock requestSuccessBlock;
+//------------------处理返回值的方式----------------------
+// block
+@property (nonatomic, copy) void(^requestSuccessBlock)(DZBaseRequest *);
 @property (nonatomic, strong) id responseObject;
 
-@property (nonatomic, copy) DZRequestFailureBlock requestFailureBlock;
+@property (nonatomic, copy) void(^requestFailureBlock)(DZBaseRequest *);
 @property (nonatomic, strong) NSError *error;
 
+// delegate
+@property (nonatomic, weak) id <DZRequestDelegate> delegate;
+
+
+//-----------------------------------------------------
+
+
+//--------------子类可复写的方法------------------
 /**
  *  基类URL，可无
  *
@@ -36,6 +51,8 @@ typedef void(^DZRequestFailureBlock)(DZBaseRequest *request);
 - (DZRequestMethod)requestMethod;
 - (id)requestParameters;
 - (DZRequestSerializerType)requestSerializerType;
+- (BOOL)useCookies;
+//---------------------------------
 
 
 /**
@@ -47,4 +64,11 @@ typedef void(^DZRequestFailureBlock)(DZBaseRequest *request);
 
 - (void)clearRequestBlock;
 
+
 @end
+
+/**
+ *  通知
+ */
+FOUNDATION_EXPORT NSString * const DZRequestDidStartNotification;
+FOUNDATION_EXPORT NSString * const DZRequestDidFinishNotification;

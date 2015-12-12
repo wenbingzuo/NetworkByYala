@@ -9,6 +9,8 @@
 #import "DZRequestManager.h"
 #import <AFNetworking.h>
 
+#define DZ_HTTP_COOKIE_KEY @"DZHTTPCookieKey"
+
 @interface DZRequestManager () <NSXMLParserDelegate>
 
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
@@ -33,6 +35,7 @@
     self = [super init];
     if (self) {
         self.sessionManager = [AFHTTPSessionManager manager];
+        self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
         self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", @"application/json", nil];
         self.requests = [NSMutableDictionary dictionary];
     }
@@ -53,9 +56,28 @@
     }
 }
 
+#pragma mark 处理返回数据
+- (void)saveCookies {
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray *cookies = [cookieStorage cookies];
+    if (cookies.count > 0) {
+        NSData *cookieData = [NSKeyedArchiver archivedDataWithRootObject:cookies];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:cookieData forKey:DZ_HTTP_COOKIE_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
 - (void)handleReponseResult:(NSURLSessionDataTask *)task response:(id)responseObject error:(NSError *)error{
     NSString *key = [self taskHashKey:task];
     DZBaseRequest *request = self.requests[key];
+    
+    // 使用cookie时需要保存cookie
+    if ([request useCookies]) {
+        [self saveCookies];
+    }
+    
+    // block方式返回数据
     if (error) {
         if (request.requestFailureBlock) {
             request.error = error;
@@ -67,8 +89,24 @@
             request.requestSuccessBlock(request);
         }
     }
-    
     [request clearRequestBlock];
+    
+    // 代理方式返回数据
+    if (error) {
+        if ([request.delegate respondsToSelector:@selector(requestDidFailure:)]) {
+            [request.delegate requestDidFailure:request];
+        }
+    } else {
+        if ([request.delegate respondsToSelector:@selector(requestDidSuccess:)]) {
+            [request.delegate requestDidSuccess:request];
+        }
+    }
+    
+    // 发送完成通知
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestDidFinishNotification object:request];
+    });
+    
     [self removeRequest:task];
 }
 
@@ -94,10 +132,29 @@
 }
 #pragma mark - Public
 - (void)startRequest:(DZBaseRequest *)request {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestDidStartNotification object:request];
+    });
+    
+    // 使用cookie
+    if ([request useCookies]) {
+        id cookieData = [[NSUserDefaults standardUserDefaults] objectForKey:DZ_HTTP_COOKIE_KEY];
+        NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:cookieData];
+        if ([cookies isKindOfClass:[NSArray class]] && cookies.count > 0) {
+            NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+            for (NSHTTPCookie *cookie in cookies) {
+                [cookieStorage setCookie:cookie];
+            }
+        }
+    }
+    
+    // 处理URL
     NSString *url = [self configRequestURL:request];
     
+    // 处理参数
     id params = [request requestParameters];
     
+    // 处理序列化类型
     DZRequestSerializerType requestSerializerType = [request requestSerializerType];
     switch (requestSerializerType) {
         case DZRequestSerializerTypeForm:
@@ -109,6 +166,7 @@
             break;
     }
     
+    // 处理请求
     DZRequestMethod requestMethod = [request requestMethod];
     NSURLSessionDataTask *task = nil;
     switch (requestMethod) {

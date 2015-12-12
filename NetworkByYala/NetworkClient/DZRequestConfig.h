@@ -55,9 +55,13 @@ typedef NS_ENUM(NSInteger, DZRequestSerializerType) {
 
 
 #ifdef DEBUG
-    #define DZDebugLog(...) NSLog(__VA_ARGS__)
+    #define DZDebugLog(...)    NSLog(__VA_ARGS__)
+    #define DZDebugMethod()    NSLog(@"%s", __func__)
+    #define DZDebugError()     NSLog(@"Error at %s Line:%d", __func__, __LINE__)
 #else
     #define DZDebugLog(...)
+    #define DZDebugMethod()
+    #define DZDebugError()
 #endif
 
 

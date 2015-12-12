@@ -11,7 +11,7 @@
 #import "DZTestPost.h"
 #import "DZOSChinaTest.h"
 
-@interface ViewController ()
+@interface ViewController () <DZRequestDelegate>
 
 @end
 
@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testNotification:) name:DZRequestDidFinishNotification object:nil];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -27,6 +28,12 @@
 //    DZTest *test = [DZTest new];
 //    [test start];
     DZOSChinaTest *tst = [DZOSChinaTest new];
+    [tst setRequestSuccessBlock:^(DZBaseRequest *request) {
+        DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
+    }];
+    [tst setRequestFailureBlock:^(DZBaseRequest *request) {
+        DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
+    }];
     [tst start];
 }
 
@@ -36,11 +43,20 @@
 }
 - (IBAction)sendGETRequest:(id)sender {
     DZTestGet *getTest = [DZTestGet new];
+    getTest.delegate = self;
+    [getTest setRequestSuccessBlock:^(DZBaseRequest *request) {
+        DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
+    }];
+    [getTest setRequestFailureBlock:^(DZBaseRequest *request) {
+        DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
+    }];
+    
     [getTest start];
 }
 
 - (IBAction)sendPOSTRequest:(id)sender {
     DZTestPost *postTest = [DZTestPost new];
+    postTest.delegate = self;
     [postTest setRequestSuccessBlock:^(DZBaseRequest *request) {
         DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
     }];
@@ -54,4 +70,19 @@
 - (IBAction)sendDELETERequest:(id)sender {
 }
 
+
+
+#pragma mark - DZRequestDelegate
+- (void)requestDidSuccess:(DZBaseRequest *)request {
+    DZDebugMethod();
+}
+
+- (void)requestDidFailure:(DZBaseRequest *)request {
+    DZDebugMethod();
+}
+
+#pragma mark - NSNotification
+- (void)testNotification:(NSNotification *)notification {
+    
+}
 @end

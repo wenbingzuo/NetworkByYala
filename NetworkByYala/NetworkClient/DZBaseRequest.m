@@ -10,6 +10,9 @@
 #import "DZRequestConfig.h"
 #import "DZRequestManager.h"
 
+NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.finish";
+NSString * const DZRequestDidStartNotification = @"com.forever.HTTP.request.start";
+
 @implementation DZBaseRequest
 
 - (NSString *)baseURL {
@@ -26,6 +29,10 @@
 
 - (id)requestParameters {
     return nil;
+}
+
+- (BOOL)useCookies {
+    return YES;
 }
 
 - (DZRequestSerializerType)requestSerializerType {
@@ -48,4 +55,5 @@
     self.requestSuccessBlock = nil;
     self.requestFailureBlock = nil;
 }
+
 @end
