@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NetworkByYala/ViewController.m"
-            timestampString = "471601209.878097"
+            timestampString = "471611360.290833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-testNotification:"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-sendDownloadRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NetworkByYala/ViewController.m"
+            timestampString = "471611360.290833"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-sendDownloadRequest:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

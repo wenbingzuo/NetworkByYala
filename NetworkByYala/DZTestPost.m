@@ -10,7 +10,7 @@
 
 @implementation DZTestPost
 - (NSString *)baseURL {
-    return  @"https://api.menke.joinmind.cn";
+    return  @"https://api-menke.dev.joinmind.org";
 }
 
 - (NSString *)requestURL {
@@ -19,9 +19,14 @@
 
 - (id)requestParameters {
     return @{@"phone":@"17710280827", @"password":@"123456"};
+//    return @"123";
 }
 
 - (DZRequestMethod)requestMethod {
-    return DZRequestMethodPost;
+    return DZRequestMethodPOST;
+}
+
+- (DZRequestSerializerType)requestSerializerType {
+    return DZRequestSerializerTypeJSON;
 }
 @end

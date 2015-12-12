@@ -10,6 +10,9 @@
 		8D0DF2191C1BC82B00B54434 /* DZOSChinaTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF2181C1BC82B00B54434 /* DZOSChinaTest.m */; };
 		8D0DF23F1C1BDE0400B54434 /* DZTestGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF23E1C1BDE0400B54434 /* DZTestGet.m */; };
 		8D0DF2421C1BDEEE00B54434 /* DZTestPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF2411C1BDEEE00B54434 /* DZTestPost.m */; };
+		8D0DF2471C1C31FF00B54434 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8D0DF2461C1C31FF00B54434 /* images.jpeg */; };
+		8D0DF24A1C1C34CB00B54434 /* DZTestUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF2491C1C34CB00B54434 /* DZTestUpload.m */; };
+		8D0DF24D1C1C3A5B00B54434 /* DZRequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF24C1C1C3A5B00B54434 /* DZRequestTool.m */; };
 		8D9FBE281C16EED30077A9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE271C16EED30077A9B4 /* main.m */; };
 		8D9FBE2B1C16EED30077A9B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2A1C16EED30077A9B4 /* AppDelegate.m */; };
 		8D9FBE2E1C16EED30077A9B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2D1C16EED30077A9B4 /* ViewController.m */; };
@@ -30,6 +33,11 @@
 		8D0DF23E1C1BDE0400B54434 /* DZTestGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTestGet.m; sourceTree = "<group>"; };
 		8D0DF2401C1BDEEE00B54434 /* DZTestPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTestPost.h; sourceTree = "<group>"; };
 		8D0DF2411C1BDEEE00B54434 /* DZTestPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTestPost.m; sourceTree = "<group>"; };
+		8D0DF2461C1C31FF00B54434 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
+		8D0DF2481C1C34CB00B54434 /* DZTestUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTestUpload.h; sourceTree = "<group>"; };
+		8D0DF2491C1C34CB00B54434 /* DZTestUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTestUpload.m; sourceTree = "<group>"; };
+		8D0DF24B1C1C3A5B00B54434 /* DZRequestTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRequestTool.h; sourceTree = "<group>"; };
+		8D0DF24C1C1C3A5B00B54434 /* DZRequestTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRequestTool.m; sourceTree = "<group>"; };
 		8D81D3C01C16F0A000BB89D2 /* NetworkByYala-PCH.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetworkByYala-PCH.pch"; sourceTree = "<group>"; };
 		8D9FBE231C16EED30077A9B4 /* NetworkByYala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkByYala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9FBE271C16EED30077A9B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -78,6 +86,8 @@
 				8DE1C6FF1C1AED3300D3F99F /* DZRequestManager.h */,
 				8DE1C7001C1AED3300D3F99F /* DZRequestManager.m */,
 				8DE1C6FD1C1AE0C200D3F99F /* DZRequestConfig.h */,
+				8D0DF24B1C1C3A5B00B54434 /* DZRequestTool.h */,
+				8D0DF24C1C1C3A5B00B54434 /* DZRequestTool.m */,
 				8DE1C6FE1C1AE20600D3F99F /* DZRequest.h */,
 			);
 			path = NetworkClient;
@@ -122,6 +132,8 @@
 				8D0DF23E1C1BDE0400B54434 /* DZTestGet.m */,
 				8D0DF2401C1BDEEE00B54434 /* DZTestPost.h */,
 				8D0DF2411C1BDEEE00B54434 /* DZTestPost.m */,
+				8D0DF2481C1C34CB00B54434 /* DZTestUpload.h */,
+				8D0DF2491C1C34CB00B54434 /* DZTestUpload.m */,
 				8D0DF2171C1BC82B00B54434 /* DZOSChinaTest.h */,
 				8D0DF2181C1BC82B00B54434 /* DZOSChinaTest.m */,
 				8D9FBE2F1C16EED30077A9B4 /* Main.storyboard */,
@@ -136,6 +148,7 @@
 		8D9FBE261C16EED30077A9B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8D0DF2461C1C31FF00B54434 /* images.jpeg */,
 				8D9FBE271C16EED30077A9B4 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -211,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D9FBE361C16EED30077A9B4 /* LaunchScreen.storyboard in Resources */,
+				8D0DF2471C1C31FF00B54434 /* images.jpeg in Resources */,
 				8D9FBE331C16EED30077A9B4 /* Assets.xcassets in Resources */,
 				8D9FBE311C16EED30077A9B4 /* Main.storyboard in Resources */,
 			);
@@ -279,6 +293,8 @@
 				8D9FBE2B1C16EED30077A9B4 /* AppDelegate.m in Sources */,
 				8D9FBE281C16EED30077A9B4 /* main.m in Sources */,
 				8DE1C7011C1AED3300D3F99F /* DZRequestManager.m in Sources */,
+				8D0DF24A1C1C34CB00B54434 /* DZTestUpload.m in Sources */,
+				8D0DF24D1C1C3A5B00B54434 /* DZRequestTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +410,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NetworkByYala/Resources/NetworkByYala-PCH.pch";
 				INFOPLIST_FILE = NetworkByYala/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = joinmind.NetworkByYala;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -408,6 +425,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NetworkByYala/Resources/NetworkByYala-PCH.pch";
 				INFOPLIST_FILE = NetworkByYala/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = joinmind.NetworkByYala;
 				PRODUCT_NAME = "$(TARGET_NAME)";

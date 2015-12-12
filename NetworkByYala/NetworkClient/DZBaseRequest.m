@@ -10,17 +10,21 @@
 #import "DZRequestConfig.h"
 #import "DZRequestManager.h"
 
+NSString * const DZRequestWillStartNotification = @"com.forever.HTTP.request.start";
 NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.finish";
-NSString * const DZRequestDidStartNotification = @"com.forever.HTTP.request.start";
 
 @implementation DZBaseRequest
+
+- (DZConstructionBlock)constructionBodyBlock {
+    return nil;
+}
 
 - (NSString *)baseURL {
     return DZ_ENVIRONMENT;
 }
 
 - (DZRequestMethod)requestMethod {
-    return DZRequestMethodGet;
+    return DZRequestMethodGET;
 }
 
 - (NSString *)requestURL {
@@ -54,6 +58,21 @@ NSString * const DZRequestDidStartNotification = @"com.forever.HTTP.request.star
 - (void)clearRequestBlock {
     self.requestSuccessBlock = nil;
     self.requestFailureBlock = nil;
+}
+
+#pragma mark - Private
+- (void)requestWillStartTag {
+    if (self.requestStartBlock) {
+        self.requestStartBlock(self);
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(requestWillStart:)]) {
+        [self.delegate requestWillStart:self];
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestWillStartNotification object:self];
+    });
 }
 
 @end

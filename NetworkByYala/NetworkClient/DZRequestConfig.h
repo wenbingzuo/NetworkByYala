@@ -16,11 +16,11 @@ typedef NS_ENUM(NSInteger, DZRequestMethod) {
     /**
      *  GET请求
      */
-    DZRequestMethodGet = 0,
+    DZRequestMethodGET = 0,
     /**
      *  POST请求
      */
-    DZRequestMethodPost,
+    DZRequestMethodPOST,
     /**
      *  PUT请求
      */
@@ -28,12 +28,17 @@ typedef NS_ENUM(NSInteger, DZRequestMethod) {
     /**
      *  DELETE请求
      */
-    DZRequestMethodDelete
+    DZRequestMethodDELETE
 };
 
 typedef NS_ENUM(NSInteger, DZRequestSerializerType) {
     DZRequestSerializerTypeForm,
     DZRequestSerializerTypeJSON
+};
+
+typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
+    DZResponseSerializerTypeJSON,
+    DZResponseSerializerTypeXML
 };
 
 

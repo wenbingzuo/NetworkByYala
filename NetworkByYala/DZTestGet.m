@@ -10,16 +10,12 @@
 
 @implementation DZTestGet
 
-- (id)requestParameters {
-    return @{@"filter":@"default"};
-}
-
 - (NSString *)baseURL {
-    return  @"https://api.menke.joinmind.cn";
+    return  @"https://api-menke.dev.joinmind.org";
 }
 
 - (NSString *)requestURL {
-    return @"/v1/feed/circle";
+    return @"/v1/user/getProfile";
 }
 
 @end

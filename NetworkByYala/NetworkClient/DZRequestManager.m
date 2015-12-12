@@ -8,6 +8,7 @@
 
 #import "DZRequestManager.h"
 #import <AFNetworking.h>
+#import "DZRequestTool.h"
 
 #define DZ_HTTP_COOKIE_KEY @"DZHTTPCookieKey"
 
@@ -56,7 +57,7 @@
     }
 }
 
-#pragma mark 处理返回数据
+#pragma mark - cookies
 - (void)saveCookies {
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSArray *cookies = [cookieStorage cookies];
@@ -68,45 +69,58 @@
     }
 }
 
+- (void)loadCookies {
+    id cookieData = [[NSUserDefaults standardUserDefaults] objectForKey:DZ_HTTP_COOKIE_KEY];
+    NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:cookieData];
+    if ([cookies isKindOfClass:[NSArray class]] && cookies.count > 0) {
+        NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        for (NSHTTPCookie *cookie in cookies) {
+            [cookieStorage setCookie:cookie];
+        }
+    }
+}
+
+#pragma mark - 请求结束处理
+- (void)requestDidFinishTag:(DZBaseRequest *)request {
+    if (request.error) {
+        if (request.requestFailureBlock) {
+            request.requestFailureBlock(request);
+        }
+        
+        if ([request.delegate respondsToSelector:@selector(requestDidFailure:)]) {
+            [request.delegate requestDidFailure:request];
+        }
+    } else {
+        if (request.requestSuccessBlock) {
+            request.requestSuccessBlock(request);
+        }
+        
+        if ([request.delegate respondsToSelector:@selector(requestDidSuccess:)]) {
+            [request.delegate requestDidSuccess:request];
+        }
+    }
+    [request clearRequestBlock];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestDidFinishNotification object:request];
+    });
+}
+
 - (void)handleReponseResult:(NSURLSessionDataTask *)task response:(id)responseObject error:(NSError *)error{
     NSString *key = [self taskHashKey:task];
     DZBaseRequest *request = self.requests[key];
+    request.responseObject = responseObject;
+    request.error = error;
     
     // 使用cookie时需要保存cookie
     if ([request useCookies]) {
         [self saveCookies];
     }
     
-    // block方式返回数据
-    if (error) {
-        if (request.requestFailureBlock) {
-            request.error = error;
-            request.requestFailureBlock(request);
-        }
-    } else {
-        if (request.requestSuccessBlock) {
-            request.responseObject = responseObject;
-            request.requestSuccessBlock(request);
-        }
-    }
-    [request clearRequestBlock];
+    // 发送结束tag
+    [self requestDidFinishTag:request];
     
-    // 代理方式返回数据
-    if (error) {
-        if ([request.delegate respondsToSelector:@selector(requestDidFailure:)]) {
-            [request.delegate requestDidFailure:request];
-        }
-    } else {
-        if ([request.delegate respondsToSelector:@selector(requestDidSuccess:)]) {
-            [request.delegate requestDidSuccess:request];
-        }
-    }
-    
-    // 发送完成通知
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestDidFinishNotification object:request];
-    });
-    
+    // 请求成功后移除此次请求
     [self removeRequest:task];
 }
 
@@ -132,27 +146,27 @@
 }
 #pragma mark - Public
 - (void)startRequest:(DZBaseRequest *)request {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestDidStartNotification object:request];
-    });
-    
     // 使用cookie
     if ([request useCookies]) {
-        id cookieData = [[NSUserDefaults standardUserDefaults] objectForKey:DZ_HTTP_COOKIE_KEY];
-        NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:cookieData];
-        if ([cookies isKindOfClass:[NSArray class]] && cookies.count > 0) {
-            NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-            for (NSHTTPCookie *cookie in cookies) {
-                [cookieStorage setCookie:cookie];
-            }
-        }
+        [self loadCookies];
     }
     
     // 处理URL
-    NSString *url = [self configRequestURL:request];
+    NSString *urlCoded = [self configRequestURL:request];
+    NSString *url = [urlCoded stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    if (![DZRequestTool validateUrl:url]) {
+        DZDebugLog(@"url错误：%@", url);
+        return;
+    }
     
     // 处理参数
     id params = [request requestParameters];
+    if ([request requestSerializerType] == DZRequestSerializerTypeJSON) {
+        if (![DZRequestTool validateJSON:params]) {
+            DZDebugLog(@"参数json出错：%@", params);
+            return;
+        }
+    }
     
     // 处理序列化类型
     DZRequestSerializerType requestSerializerType = [request requestSerializerType];
@@ -170,24 +184,34 @@
     DZRequestMethod requestMethod = [request requestMethod];
     NSURLSessionDataTask *task = nil;
     switch (requestMethod) {
-        case DZRequestMethodGet:
+        case DZRequestMethodGET:
         {
-            
             task = [self.sessionManager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 [self handleReponseResult:task response:responseObject error:nil];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [self handleReponseResult:task response:nil error:error];
             }];
+            
         }
             break;
         
-        case DZRequestMethodPost:
+        case DZRequestMethodPOST:
         {
-            task = [self.sessionManager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                [self handleReponseResult:task response:responseObject error:nil];
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                [self handleReponseResult:task response:nil error:error];
-            }];
+            if ([request constructionBodyBlock]) {
+                task = [self.sessionManager POST:url parameters:params constructingBodyWithBlock:[request constructionBodyBlock] progress:^(NSProgress * _Nonnull uploadProgress) {
+                    DZDebugLog(@"上传进度：%f", uploadProgress.fractionCompleted);
+                } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    [self handleReponseResult:task response:responseObject error:nil];
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    [self handleReponseResult:task response:nil error:error];
+                }];
+            } else {
+                task = [self.sessionManager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    [self handleReponseResult:task response:responseObject error:nil];
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    [self handleReponseResult:task response:nil error:error];
+                }];
+            }
         }
             break;
             
@@ -201,7 +225,7 @@
         }
             break;
         
-        case DZRequestMethodDelete:
+        case DZRequestMethodDELETE:
         {
             task = [self.sessionManager DELETE:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 [self handleReponseResult:task response:responseObject error:nil];
@@ -226,7 +250,7 @@
 - (void)cancelAllRequests {
     for (NSString *key in self.requests) {
         DZBaseRequest *request = self.requests[key];
-        [request stop];
+        [self cancelRequest:request];
     }
 }
 

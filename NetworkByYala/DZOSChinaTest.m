@@ -19,7 +19,7 @@
 }
 
 - (DZRequestMethod)requestMethod {
-    return DZRequestMethodPost;
+    return DZRequestMethodPOST;
 }
 
 - (DZRequestSerializerType)requestSerializerType {

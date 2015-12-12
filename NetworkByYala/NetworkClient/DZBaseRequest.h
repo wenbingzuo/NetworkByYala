@@ -12,10 +12,13 @@
 @protocol DZRequestDelegate <NSObject>
 
 @optional
+- (void)requestWillStart:(DZBaseRequest *)request;
 - (void)requestDidSuccess:(DZBaseRequest *)request;
 - (void)requestDidFailure:(DZBaseRequest *)request;
 
 @end
+
+typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 
 @interface DZBaseRequest : NSObject
 
@@ -23,6 +26,8 @@
 
 //------------------处理返回值的方式----------------------
 // block
+@property (nonatomic, copy) void(^requestStartBlock)(DZBaseRequest *);
+
 @property (nonatomic, copy) void(^requestSuccessBlock)(DZBaseRequest *);
 @property (nonatomic, strong) id responseObject;
 
@@ -32,26 +37,24 @@
 // delegate
 @property (nonatomic, weak) id <DZRequestDelegate> delegate;
 
-
 //-----------------------------------------------------
 
 
 //--------------子类可复写的方法------------------
-/**
- *  基类URL，可无
- *
- */
 - (NSString *)baseURL;
 
-/**
- *  请求的url
- *
- */
 - (NSString *)requestURL;
+
 - (DZRequestMethod)requestMethod;
+
 - (id)requestParameters;
+
 - (DZRequestSerializerType)requestSerializerType;
+
 - (BOOL)useCookies;
+
+- (DZConstructionBlock)constructionBodyBlock;
+
 //---------------------------------
 
 
@@ -70,5 +73,5 @@
 /**
  *  通知
  */
-FOUNDATION_EXPORT NSString * const DZRequestDidStartNotification;
+FOUNDATION_EXPORT NSString * const DZRequestWillStartNotification;
 FOUNDATION_EXPORT NSString * const DZRequestDidFinishNotification;

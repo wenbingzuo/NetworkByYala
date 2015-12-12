@@ -17,20 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCk-kN-Xfh">
-                                <rect key="frame" x="285" y="250" width="30" height="30"/>
-                                <state key="normal" title="PUT"/>
-                                <connections>
-                                    <action selector="sendPUTRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cOT-ct-3SM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCj-Lc-m1Y">
-                                <rect key="frame" x="273" y="320" width="55" height="30"/>
-                                <state key="normal" title="DELETE"/>
-                                <connections>
-                                    <action selector="sendDELETERequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xp0-8z-ff9"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1B-ff-oy5">
                                 <rect key="frame" x="285" y="92" width="30" height="30"/>
                                 <state key="normal" title="GET"/>
@@ -45,6 +31,34 @@
                                     <action selector="sendPOSTRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WWT-0C-ZeD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCk-kN-Xfh">
+                                <rect key="frame" x="285" y="250" width="30" height="30"/>
+                                <state key="normal" title="PUT"/>
+                                <connections>
+                                    <action selector="sendPUTRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cOT-ct-3SM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCj-Lc-m1Y">
+                                <rect key="frame" x="273" y="320" width="55" height="30"/>
+                                <state key="normal" title="DELETE"/>
+                                <connections>
+                                    <action selector="sendDELETERequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xp0-8z-ff9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtO-AL-wJF">
+                                <rect key="frame" x="277" y="376" width="47" height="30"/>
+                                <state key="normal" title="upload"/>
+                                <connections>
+                                    <action selector="sendDownloadRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HuB-uJ-h0I"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4So-q2-sI3">
+                                <rect key="frame" x="225" y="455" width="150" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="6H6-bf-wdY"/>
+                                    <constraint firstAttribute="width" constant="150" id="XKR-vS-GDb"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -52,12 +66,19 @@
                             <constraint firstItem="HCj-Lc-m1Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4qf-7d-Kzo"/>
                             <constraint firstItem="J1B-ff-oy5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="72" id="5VW-ef-GDG"/>
                             <constraint firstItem="HCj-Lc-m1Y" firstAttribute="top" secondItem="cCk-kN-Xfh" secondAttribute="bottom" constant="40" id="FZp-UX-m79"/>
+                            <constraint firstItem="4So-q2-sI3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Og6-Uf-NK3"/>
                             <constraint firstItem="M69-vs-miw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YQ2-xc-wEq"/>
                             <constraint firstItem="J1B-ff-oy5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cB1-KK-M1G"/>
+                            <constraint firstItem="qtO-AL-wJF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cl3-fE-agV"/>
+                            <constraint firstItem="4So-q2-sI3" firstAttribute="top" secondItem="qtO-AL-wJF" secondAttribute="bottom" constant="49" id="hfb-vN-i8t"/>
+                            <constraint firstItem="qtO-AL-wJF" firstAttribute="top" secondItem="HCj-Lc-m1Y" secondAttribute="bottom" constant="26" id="jNc-eh-w1r"/>
                             <constraint firstItem="cCk-kN-Xfh" firstAttribute="top" secondItem="M69-vs-miw" secondAttribute="bottom" constant="49" id="jor-vm-Edh"/>
                             <constraint firstItem="cCk-kN-Xfh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tma-kC-vMj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="progressView" destination="4So-q2-sI3" id="nST-KW-IE6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

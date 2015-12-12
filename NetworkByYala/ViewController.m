@@ -10,8 +10,10 @@
 #import "DZTestGet.h"
 #import "DZTestPost.h"
 #import "DZOSChinaTest.h"
+#import "DZTestUpload.h"
 
 @interface ViewController () <DZRequestDelegate>
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
 @end
 
@@ -20,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testNotification:) name:DZRequestDidFinishNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testNotification:) name:DZRequestDidFinishNotification object:nil];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -54,9 +56,11 @@
     [getTest start];
 }
 
+// POST
 - (IBAction)sendPOSTRequest:(id)sender {
     DZTestPost *postTest = [DZTestPost new];
-    postTest.delegate = self;
+    DZDebugLog(@"%@", NSHomeDirectory());
+    
     [postTest setRequestSuccessBlock:^(DZBaseRequest *request) {
         DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
     }];
@@ -65,24 +69,38 @@
     }];
     [postTest start];
 }
+
+
 - (IBAction)sendPUTRequest:(id)sender {
 }
 - (IBAction)sendDELETERequest:(id)sender {
 }
-
-
-
-#pragma mark - DZRequestDelegate
-- (void)requestDidSuccess:(DZBaseRequest *)request {
-    DZDebugMethod();
-}
-
-- (void)requestDidFailure:(DZBaseRequest *)request {
-    DZDebugMethod();
-}
-
-#pragma mark - NSNotification
-- (void)testNotification:(NSNotification *)notification {
+- (IBAction)sendDownloadRequest:(id)sender {
+    DZTestUpload *testDownload = [DZTestUpload new];
     
+    [testDownload setRequestSuccessBlock:^(DZBaseRequest *request) {
+        DZDebugLog(@"%@", request.responseObject);
+    }];
+    [testDownload setRequestFailureBlock:^(DZBaseRequest *request) {
+        DZDebugLog(@"%@", request.error.localizedDescription);
+    }];
+    
+    [testDownload start];
 }
+
+
+
+//#pragma mark - DZRequestDelegate
+//- (void)requestDidSuccess:(DZBaseRequest *)request {
+//    DZDebugMethod();
+//}
+//
+//- (void)requestDidFailure:(DZBaseRequest *)request {
+//    DZDebugMethod();
+//}
+//
+//#pragma mark - NSNotification
+//- (void)testNotification:(NSNotification *)notification {
+//    
+//}
 @end
