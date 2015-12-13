@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, DZRequestSerializerType) {
     /**
      *  content-type: application/x-www-form-urlencoded
      */
-    DZRequestSerializerTypeForm,
+    DZRequestSerializerTypeForm = 0,
     /**
      *  content-type: application/json
      */
@@ -52,7 +52,7 @@ typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
     /**
      *  JSON from server
      */
-    DZResponseSerializerTypeJSON,
+    DZResponseSerializerTypeJSON = 0,
     /**
      *  XML from server
      */

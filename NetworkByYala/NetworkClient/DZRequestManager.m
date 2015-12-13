@@ -146,6 +146,13 @@
 }
 #pragma mark - Public
 - (void)startRequest:(DZBaseRequest *)request {
+    if (self.reachabilityStatus == DZRequestReachabilityStatusUnknow || self.reachabilityStatus == DZRequestReachabilityStatusNotReachable) {
+        NSError *error = [NSError errorWithDomain:@"domain: network not reachable" code:999 userInfo:nil];
+        request.error = error;
+        [self requestDidFinishTag:request];
+        return;
+    }
+    
     // 使用cookie
     if ([request useCookies]) {
         [self loadCookies];
@@ -263,6 +270,28 @@
         DZBaseRequest *request = self.requests[key];
         [self cancelRequest:request];
     }
+}
+
+- (void)startNetworkStateMonitoring {
+    [self.sessionManager.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+                _reachabilityStatus = DZRequestReachabilityStatusUnknow;
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+                _reachabilityStatus = DZRequestReachabilityStatusNotReachable;
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                _reachabilityStatus = DZRequestReachabilityStatusViaWWAN;
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                _reachabilityStatus = DZRequestReachabilityStatusViaWiFi;
+                break;
+            default:
+                break;
+        }
+    }];
+    [self.sessionManager.reachabilityManager startMonitoring];
 }
 
 @end

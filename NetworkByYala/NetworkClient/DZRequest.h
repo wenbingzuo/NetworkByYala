@@ -9,6 +9,7 @@
 #ifndef DZRequest_h
 #define DZRequest_h
 
-#import "DZRequestConfig.h"
+#import "DZBaseRequest.h"
+#import "DZRequestManager.h"
 
 #endif /* DZRequest_h */

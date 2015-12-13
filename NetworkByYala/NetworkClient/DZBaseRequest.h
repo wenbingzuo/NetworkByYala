@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZRequestConfig.h"
 
 @class DZBaseRequest;
 @protocol DZRequestDelegate <NSObject>
