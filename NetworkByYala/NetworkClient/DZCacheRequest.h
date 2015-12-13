@@ -10,10 +10,10 @@
 
 @interface DZCacheRequest : DZBaseRequest
 
+// flag - whether load data from cache
 @property (nonatomic, assign) BOOL loadCache;
 
-- (id)dataFromCache;
-
-- (void)saveData:(id)responseObject;
+// cache data
+@property (nonatomic, strong, readonly) id cacheData;
 
 @end

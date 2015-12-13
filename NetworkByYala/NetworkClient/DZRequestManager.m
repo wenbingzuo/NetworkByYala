@@ -9,6 +9,7 @@
 #import "DZRequestManager.h"
 #import <AFNetworking.h>
 #import "DZRequestTool.h"
+#import <AFNetworkActivityIndicatorManager.h>
 
 #define DZ_HTTP_COOKIE_KEY @"DZHTTPCookieKey"
 
@@ -36,23 +37,20 @@
     self = [super init];
     if (self) {
         self.sessionManager = [AFHTTPSessionManager manager];
-        self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
-        self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", @"application/json", nil];
         self.requests = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
 - (NSString *)configRequestURL:(DZBaseRequest *)request {
-    NSString *requestURL = [request requestURL];
-    if ([requestURL hasPrefix:@"http"]) {
-        return requestURL;
+    if ([request.requestURL hasPrefix:@"http"]) {
+        return request.requestURL;
     }
     
-    if ([[request baseURL] hasPrefix:@"http"]) {
-        return [NSString stringWithFormat:@"%@%@", [request baseURL], [request requestURL]];
+    if ([request.baseURL hasPrefix:@"http"]) {
+        return [NSString stringWithFormat:@"%@%@", request.baseURL, request.requestURL];
     } else {
-        DZDebugLog(@"未配置好请求URL base: %@ requestURL: %@", [request baseURL], [request requestURL]);
+        DZDebugLog(@"未配置好请求URL base: %@ requestURL: %@", request.baseURL, request.requestURL);
         return @"";
     }
 }
@@ -115,7 +113,7 @@
     request.error = error;
     
     // 使用cookie时需要保存cookie
-    if ([request useCookies]) {
+    if (request.useCookies) {
         [self saveCookies];
     }
     
@@ -156,7 +154,7 @@
     }
     
     // 使用cookie
-    if ([request useCookies]) {
+    if (request.useCookies) {
         [self loadCookies];
     }
     
@@ -169,8 +167,8 @@
     }
     
     // 处理参数
-    id params = [request requestParameters];
-    if ([request requestSerializerType] == DZRequestSerializerTypeJSON) {
+    id params = request.requestParameters;
+    if (request.requestSerializerType == DZRequestSerializerTypeJSON) {
         if (![NSJSONSerialization isValidJSONObject:params] && params) {
             DZDebugLog(@"参数json出错：%@", params);
             return;
@@ -178,7 +176,7 @@
     }
     
     // 处理序列化类型
-    DZRequestSerializerType requestSerializerType = [request requestSerializerType];
+    DZRequestSerializerType requestSerializerType = request.requestSerializerType;
     switch (requestSerializerType) {
         case DZRequestSerializerTypeForm:
             self.sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -188,7 +186,7 @@
         default:
             break;
     }
-    DZResponseSerializerType responseSerializerType = [request responseSerializerType];
+    DZResponseSerializerType responseSerializerType = request.responseSerializerType;
     switch (responseSerializerType) {
         case DZResponseSerializerTypeJSON:
             self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -199,9 +197,10 @@
         default:
             break;
     }
+    self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", @"application/json", nil];
     
     // 处理请求
-    DZRequestMethod requestMethod = [request requestMethod];
+    DZRequestMethod requestMethod = request.requestMethod;
     NSURLSessionDataTask *task = nil;
     switch (requestMethod) {
         case DZRequestMethodGET:
@@ -257,6 +256,8 @@
         default:
             break;
     }
+    
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     request.task = task;
     [self addRequest:request];

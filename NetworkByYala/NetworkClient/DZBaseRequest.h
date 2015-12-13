@@ -84,35 +84,32 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 
 
 /**
- *  overwrite to custom request
+ *  custom properties
  *
  */
-// default is `DZ_ENVIRONMENT`, `DZ_ENVIRONMENT` configured in config.h, or overwrite to support special base
-- (NSString *)baseURL;
+// default is `DZ_ENVIRONMENT`, `DZ_ENVIRONMENT` configured in config.h, or set special value
+@property (nonatomic, copy) NSString *baseURL;
 
 // default is ``
-- (NSString *)requestURL;
+@property (nonatomic, copy) NSString *requestURL;
 
 // default is `DZRequestMethodGET`
-- (DZRequestMethod)requestMethod;
+@property (nonatomic, assign) DZRequestMethod requestMethod;
 
 // default is `nil`
-- (id)requestParameters;
+@property (nonatomic, strong) id requestParameters;
 
 // default is `DZRequestSerializerTypeJSON`
-- (DZRequestSerializerType)requestSerializerType;
+@property (nonatomic, assign) DZRequestSerializerType requestSerializerType;
 
 // default is `DZResponseSerializerTypeJSON`
-- (DZResponseSerializerType)responseSerializerType;
+@property (nonatomic, assign) DZResponseSerializerType responseSerializerType;
 
 // default is `YES`
-- (BOOL)useCookies;
+@property (nonatomic, assign) BOOL useCookies;
 
-// POST request overwrite to upload such as images, default `nil`
-- (DZConstructionBlock)constructionBodyBlock;
-
-// toggle when request success
-- (void)requestCompleteSuccess;
+// POST upload request such as images, default `nil`
+@property (nonatomic, copy) DZConstructionBlock constructionBodyBlock;
 
 /**
  *  if overwrite, call super
@@ -121,6 +118,9 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 - (void)startWithRequestSuccessBlock:(void(^)(DZBaseRequest *request))success failureBlock:(void(^)(DZBaseRequest *request))failure;
 - (void)stop;
 
+
+// toggle when request success
+- (void)requestCompleteSuccess;
 
 - (void)clearRequestBlock;
 

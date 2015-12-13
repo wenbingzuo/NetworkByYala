@@ -15,36 +15,33 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.fin
 
 @implementation DZBaseRequest
 
-- (DZConstructionBlock)constructionBodyBlock {
-    return nil;
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.baseURL = DZ_ENVIRONMENT;
+        self.requestURL = @"";
+        self.requestMethod = DZRequestMethodGET;
+        self.requestParameters = nil;
+        self.requestSerializerType = DZRequestSerializerTypeJSON;
+        self.responseSerializerType = DZResponseSerializerTypeJSON;
+        self.useCookies = YES;
+        self.constructionBodyBlock = nil;
+    }
+    return self;
 }
 
-- (NSString *)baseURL {
-    return DZ_ENVIRONMENT;
-}
-
-- (DZRequestMethod)requestMethod {
-    return DZRequestMethodGET;
-}
-
-- (NSString *)requestURL {
-    return @"";
-}
-
-- (id)requestParameters {
-    return nil;
-}
-
-- (BOOL)useCookies {
-    return YES;
-}
-
-- (DZRequestSerializerType)requestSerializerType {
-    return DZRequestSerializerTypeJSON;
-}
-
-- (DZResponseSerializerType)responseSerializerType {
-    return DZResponseSerializerTypeJSON;
+- (void)requestWillStartTag {
+    if (self.requestStartBlock) {
+        self.requestStartBlock(self);
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(requestWillStart:)]) {
+        [self.delegate requestWillStart:self];
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestWillStartNotification object:self];
+    });
 }
 
 - (void)start {
@@ -70,28 +67,12 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.fin
     
 }
 
-- (void)dealloc {
-    DZDebugLog(@"%@ dealloc", [self class]);
-}
-
 - (void)clearRequestBlock {
     self.requestSuccessBlock = nil;
     self.requestFailureBlock = nil;
 }
 
-#pragma mark - Private
-- (void)requestWillStartTag {
-    if (self.requestStartBlock) {
-        self.requestStartBlock(self);
-    }
-    
-    if ([self.delegate respondsToSelector:@selector(requestWillStart:)]) {
-        [self.delegate requestWillStart:self];
-    }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestWillStartNotification object:self];
-    });
+- (void)dealloc {
+    DZDebugLog(@"%@ dealloc", [self class]);
 }
-
 @end

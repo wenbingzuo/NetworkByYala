@@ -30,8 +30,10 @@
 }
 - (IBAction)sendGETRequest:(id)sender {
     DZTestGet *getTest = [DZTestGet new];
+    getTest.baseURL = @"https://api-menke.dev.joinmind.org";
+    getTest.requestURL = @"/v1/user/getProfile";
+    
     getTest.loadCache = YES;
-    getTest.delegate = self;
     [getTest setRequestSuccessBlock:^(DZBaseRequest *request) {
         DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
     }];
@@ -77,8 +79,12 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     DZTestGet *getTest = [DZTestGet new];
+    
+    getTest.baseURL = @"https://api-menke.dev.joinmind.org";
+    getTest.requestURL = @"/v1/user/getProfile";
+    
     getTest.loadCache = NO;
-    getTest.delegate = self;
+    
     [getTest setRequestSuccessBlock:^(DZBaseRequest *request) {
         DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
     }];

@@ -10,12 +10,5 @@
 
 @implementation DZTestGet
 
-- (NSString *)baseURL {
-    return  @"https://api-menke.dev.joinmind.org";
-}
-
-- (NSString *)requestURL {
-    return @"/v1/user/getProfile";
-}
 
 @end

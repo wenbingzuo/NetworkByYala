@@ -17,6 +17,17 @@
 
 @implementation DZCacheRequest
 
+- (id)cacheData {
+    if (!_cacheData) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *path = [self cacheFilePath];
+        if ([fileManager fileExistsAtPath:path]) {
+            _cacheData = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        }
+    }
+    return _cacheData;
+}
+
 - (void)createPath:(NSString *)path {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error = nil;
@@ -73,8 +84,6 @@
 }
 
 - (void)start {
-    DZDebugLog(@"%@", NSHomeDirectory());
-    
     if (!self.loadCache) {
         [super start];
         return;
@@ -90,7 +99,7 @@
 }
 
 - (void)requestDidFinishTag {
-    self.responseObject = [self dataFromCache];
+    self.responseObject = self.cacheData;
     
     if (self.error) {
         if (self.requestFailureBlock) {
@@ -115,21 +124,6 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestDidFinishNotification object:self];
     });
 
-}
-
-- (id)dataFromCache {
-    if (self.cacheData) {
-        return self.cacheData;
-    }
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *path = [self cacheFilePath];
-    if ([fileManager fileExistsAtPath:path]) {
-        self.cacheData = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-        return self.cacheData;
-    } else {
-        return nil;
-    }
 }
 
 - (void)saveData:(id)responseObject {
