@@ -40,23 +40,33 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 //-----------------------------------------------------
 
 
-//--------------子类可复写的方法------------------
+/**
+ *  overrate to custom request
+ *
+ */
+// default is `DZ_ENVIRONMENT`, `DZ_ENVIRONMENT` configured in config.h, or overrate to support special base
 - (NSString *)baseURL;
 
+// default is ``
 - (NSString *)requestURL;
 
+// default is `DZRequestMethodGET`
 - (DZRequestMethod)requestMethod;
 
+// default is `nil`
 - (id)requestParameters;
 
+// default is `DZRequestSerializerTypeJSON`
 - (DZRequestSerializerType)requestSerializerType;
+
+// default is `DZResponseSerializerTypeJSON`
 - (DZResponseSerializerType)responseSerializerType;
 
+// default is `YES`
 - (BOOL)useCookies;
 
+// POST request overrate to upload such as images, default `nil`
 - (DZConstructionBlock)constructionBodyBlock;
-
-//---------------------------------
 
 
 /**

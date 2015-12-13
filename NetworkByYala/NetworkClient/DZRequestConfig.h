@@ -10,34 +10,52 @@
 #define DZRequestConfig_h
 
 /**
- *  HTTP请求方式
+ *  HTTP request method
  */
 typedef NS_ENUM(NSInteger, DZRequestMethod) {
     /**
-     *  GET请求
+     *  GET request
      */
     DZRequestMethodGET = 0,
     /**
-     *  POST请求
+     *  POST request
      */
     DZRequestMethodPOST,
     /**
-     *  PUT请求
+     *  PUT request
      */
     DZRequestMethodPUT,
     /**
-     *  DELETE请求
+     *  DELETE request
      */
     DZRequestMethodDELETE
 };
 
+/**
+ *  request serializer type
+ */
 typedef NS_ENUM(NSInteger, DZRequestSerializerType) {
+    /**
+     *  content-type: application/x-www-form-urlencoded
+     */
     DZRequestSerializerTypeForm,
+    /**
+     *  content-type: application/json
+     */
     DZRequestSerializerTypeJSON
 };
 
+/**
+ *  response serializer type
+ */
 typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
+    /**
+     *  JSON from server
+     */
     DZResponseSerializerTypeJSON,
+    /**
+     *  XML from server
+     */
     DZResponseSerializerTypeXML
 };
 
