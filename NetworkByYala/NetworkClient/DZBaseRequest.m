@@ -48,7 +48,18 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.fin
 }
 
 - (void)start {
+    [self requestWillStartTag];
     [[DZRequestManager shareManager] startRequest:self];
+}
+
+- (void)startWithRequestSuccessBlock:(void(^)(DZBaseRequest *request))success failureBlock:(void(^)(DZBaseRequest *request))failure {
+    [self setRequestSuccessBlock:success failureBlock:failure];
+    [self start];
+}
+
+- (void)setRequestSuccessBlock:(void(^)(DZBaseRequest *request))success failureBlock:(void(^)(DZBaseRequest *request))failure {
+    self.requestSuccessBlock = success;
+    self.requestFailureBlock = failure;
 }
 
 - (void)stop {

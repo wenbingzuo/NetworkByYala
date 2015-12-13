@@ -60,9 +60,10 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 
 
 /**
- *  复写时需要调用super
+ *  if overrate, call super
  */
 - (void)start;
+- (void)startWithRequestSuccessBlock:(void(^)(DZBaseRequest *request))success failureBlock:(void(^)(DZBaseRequest *request))failure;
 - (void)stop;
 
 
