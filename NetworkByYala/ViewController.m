@@ -30,6 +30,7 @@
 }
 - (IBAction)sendGETRequest:(id)sender {
     DZTestGet *getTest = [DZTestGet new];
+    getTest.loadCache = YES;
     getTest.delegate = self;
     [getTest setRequestSuccessBlock:^(DZBaseRequest *request) {
         DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
@@ -73,6 +74,20 @@
     [testDownload start];
 }
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    DZTestGet *getTest = [DZTestGet new];
+    getTest.loadCache = NO;
+    getTest.delegate = self;
+    [getTest setRequestSuccessBlock:^(DZBaseRequest *request) {
+        DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
+    }];
+    [getTest setRequestFailureBlock:^(DZBaseRequest *request) {
+        DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
+    }];
+    
+    [getTest start];
+}
 
 
 //#pragma mark - DZRequestDelegate

@@ -12,6 +12,7 @@
 		8D0DF2471C1C31FF00B54434 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8D0DF2461C1C31FF00B54434 /* images.jpeg */; };
 		8D0DF24A1C1C34CB00B54434 /* DZTestUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF2491C1C34CB00B54434 /* DZTestUpload.m */; };
 		8D0DF24D1C1C3A5B00B54434 /* DZRequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF24C1C1C3A5B00B54434 /* DZRequestTool.m */; };
+		8D17BBFE1C1D2A00000A3140 /* DZCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D17BBFD1C1D2A00000A3140 /* DZCacheRequest.m */; };
 		8D9FBE281C16EED30077A9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE271C16EED30077A9B4 /* main.m */; };
 		8D9FBE2B1C16EED30077A9B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2A1C16EED30077A9B4 /* AppDelegate.m */; };
 		8D9FBE2E1C16EED30077A9B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2D1C16EED30077A9B4 /* ViewController.m */; };
@@ -35,6 +36,8 @@
 		8D0DF2491C1C34CB00B54434 /* DZTestUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTestUpload.m; sourceTree = "<group>"; };
 		8D0DF24B1C1C3A5B00B54434 /* DZRequestTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRequestTool.h; sourceTree = "<group>"; };
 		8D0DF24C1C1C3A5B00B54434 /* DZRequestTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRequestTool.m; sourceTree = "<group>"; };
+		8D17BBFC1C1D2A00000A3140 /* DZCacheRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZCacheRequest.h; sourceTree = "<group>"; };
+		8D17BBFD1C1D2A00000A3140 /* DZCacheRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZCacheRequest.m; sourceTree = "<group>"; };
 		8D81D3C01C16F0A000BB89D2 /* NetworkByYala-PCH.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetworkByYala-PCH.pch"; sourceTree = "<group>"; };
 		8D9FBE231C16EED30077A9B4 /* NetworkByYala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkByYala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9FBE271C16EED30077A9B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -80,6 +83,8 @@
 			children = (
 				8DE1C6FA1C1AE0AB00D3F99F /* DZBaseRequest.h */,
 				8DE1C6FB1C1AE0AB00D3F99F /* DZBaseRequest.m */,
+				8D17BBFC1C1D2A00000A3140 /* DZCacheRequest.h */,
+				8D17BBFD1C1D2A00000A3140 /* DZCacheRequest.m */,
 				8DE1C6FF1C1AED3300D3F99F /* DZRequestManager.h */,
 				8DE1C7001C1AED3300D3F99F /* DZRequestManager.m */,
 				8DE1C6FD1C1AE0C200D3F99F /* DZRequestConfig.h */,
@@ -280,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D17BBFE1C1D2A00000A3140 /* DZCacheRequest.m in Sources */,
 				8DE1C6FC1C1AE0AB00D3F99F /* DZBaseRequest.m in Sources */,
 				8D9FBE2E1C16EED30077A9B4 /* ViewController.m in Sources */,
 				8D0DF2421C1BDEEE00B54434 /* DZTestPost.m in Sources */,

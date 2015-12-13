@@ -6,8 +6,8 @@
 //  Copyright © 2015 文兵 左. All rights reserved.
 //
 
-#import "DZBaseRequest.h"
+#import "DZCacheRequest.h"
 
-@interface DZTestGet : DZBaseRequest
+@interface DZTestGet : DZCacheRequest
 
 @end

@@ -9,6 +9,48 @@
 #import <Foundation/Foundation.h>
 #import "DZRequestConfig.h"
 
+/**
+ *  HTTP request method
+ */
+typedef NS_ENUM(NSInteger, DZRequestMethod) {
+
+    DZRequestMethodGET = 0,
+
+    DZRequestMethodPOST,
+
+    DZRequestMethodPUT,
+
+    DZRequestMethodDELETE
+};
+
+/**
+ *  request serializer type
+ */
+typedef NS_ENUM(NSInteger, DZRequestSerializerType) {
+    /**
+     *  content-type: application/x-www-form-urlencoded
+     */
+    DZRequestSerializerTypeForm = 0,
+    /**
+     *  content-type: application/json
+     */
+    DZRequestSerializerTypeJSON
+};
+
+/**
+ *  response serializer type
+ */
+typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
+    /**
+     *  JSON from server
+     */
+    DZResponseSerializerTypeJSON = 0,
+    /**
+     *  XML from server
+     */
+    DZResponseSerializerTypeXML
+};
+
 @class DZBaseRequest;
 @protocol DZRequestDelegate <NSObject>
 
@@ -42,10 +84,10 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 
 
 /**
- *  overrate to custom request
+ *  overwrite to custom request
  *
  */
-// default is `DZ_ENVIRONMENT`, `DZ_ENVIRONMENT` configured in config.h, or overrate to support special base
+// default is `DZ_ENVIRONMENT`, `DZ_ENVIRONMENT` configured in config.h, or overwrite to support special base
 - (NSString *)baseURL;
 
 // default is ``
@@ -66,12 +108,14 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 // default is `YES`
 - (BOOL)useCookies;
 
-// POST request overrate to upload such as images, default `nil`
+// POST request overwrite to upload such as images, default `nil`
 - (DZConstructionBlock)constructionBodyBlock;
 
+// toggle when request success
+- (void)requestCompleteSuccess;
 
 /**
- *  if overrate, call super
+ *  if overwrite, call super
  */
 - (void)start;
 - (void)startWithRequestSuccessBlock:(void(^)(DZBaseRequest *request))success failureBlock:(void(^)(DZBaseRequest *request))failure;

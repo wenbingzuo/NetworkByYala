@@ -10,57 +10,6 @@
 #define DZRequestConfig_h
 
 /**
- *  HTTP request method
- */
-typedef NS_ENUM(NSInteger, DZRequestMethod) {
-    /**
-     *  GET request
-     */
-    DZRequestMethodGET = 0,
-    /**
-     *  POST request
-     */
-    DZRequestMethodPOST,
-    /**
-     *  PUT request
-     */
-    DZRequestMethodPUT,
-    /**
-     *  DELETE request
-     */
-    DZRequestMethodDELETE
-};
-
-/**
- *  request serializer type
- */
-typedef NS_ENUM(NSInteger, DZRequestSerializerType) {
-    /**
-     *  content-type: application/x-www-form-urlencoded
-     */
-    DZRequestSerializerTypeForm = 0,
-    /**
-     *  content-type: application/json
-     */
-    DZRequestSerializerTypeJSON
-};
-
-/**
- *  response serializer type
- */
-typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
-    /**
-     *  JSON from server
-     */
-    DZResponseSerializerTypeJSON = 0,
-    /**
-     *  XML from server
-     */
-    DZResponseSerializerTypeXML
-};
-
-
-/**
  *  基类URL的定义
  */
 #define DZ_ENVIRONMENT_TEST                      0

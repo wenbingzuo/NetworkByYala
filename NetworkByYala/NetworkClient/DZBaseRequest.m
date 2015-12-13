@@ -66,6 +66,10 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.fin
     [[DZRequestManager shareManager] cancelRequest:self];
 }
 
+- (void)requestCompleteSuccess {
+    
+}
+
 - (void)dealloc {
     DZDebugLog(@"%@ dealloc", [self class]);
 }

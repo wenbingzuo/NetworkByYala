@@ -98,6 +98,8 @@
         if ([request.delegate respondsToSelector:@selector(requestDidSuccess:)]) {
             [request.delegate requestDidSuccess:request];
         }
+        
+        [request requestCompleteSuccess];
     }
     [request clearRequestBlock];
     
@@ -147,7 +149,7 @@
 #pragma mark - Public
 - (void)startRequest:(DZBaseRequest *)request {
     if (self.reachabilityStatus == DZRequestReachabilityStatusUnknow || self.reachabilityStatus == DZRequestReachabilityStatusNotReachable) {
-        NSError *error = [NSError errorWithDomain:@"domain: network not reachable" code:999 userInfo:nil];
+        NSError *error = [NSError errorWithDomain:@"com.forever.request.noNetwork" code:999 userInfo:nil];
         request.error = error;
         [self requestDidFinishTag:request];
         return;
