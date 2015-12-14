@@ -7,7 +7,6 @@
 //
 
 #import "DZCacheRequest.h"
-#import "DZRequestTool.h"
 
 @interface DZCacheRequest ()
 
@@ -20,7 +19,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.loadCache = YES;
+        self.useCache = YES;
         self.cacheTimeInterval = 60;
     }
     return self;
@@ -77,7 +76,7 @@
 - (NSString *)cacheFileName {
     DZRequestMethod method = [self requestMethod];
     
-    NSString *baseURL = [self baseURL];
+    NSString *baseURL = [self requestBaseURL];
     NSString *requestURL = [self requestURL];
     
     NSString *fileName = [NSString stringWithFormat:@"method-%d_host-%@_url:%@", method, baseURL, requestURL];
@@ -104,7 +103,7 @@
 }
 
 - (void)start {
-    if (!self.loadCache) {
+    if (!self.useCache) {
         [super start];
         return;
     }
@@ -124,6 +123,10 @@
     }
     
     [self requestDidFinishTag];
+}
+
+- (void)startWithoutCache {
+    [super start];
 }
 
 - (void)requestDidFinishTag {
@@ -146,7 +149,7 @@
             [self.delegate requestDidSuccess:self];
         }
     }
-    [self clearRequestBlock];
+//    [self clearRequestBlock];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestDidFinishNotification object:self];

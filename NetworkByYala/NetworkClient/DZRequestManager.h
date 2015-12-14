@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DZBaseRequest.h"
+#import "DZRequestTool.h"
 
 typedef NS_ENUM(NSInteger, DZRequestReachabilityStatus) {
     DZRequestReachabilityStatusUnknow = 0,

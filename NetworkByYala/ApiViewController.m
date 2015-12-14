@@ -8,6 +8,7 @@
 
 #import "ApiViewController.h"
 #import "ResultViewController.h"
+#import "DoubanViewController.h"
 
 @interface ApiViewController () <DZRequestDelegate>
 
@@ -19,7 +20,7 @@
 
 - (IBAction)sendGetRequest:(id)sender {
     DZBaseRequest *request = [DZBaseRequest new];
-    request.baseURL = @"https://api.douban.com";
+    request.requestBaseURL = @"https://api.douban.com";
     request.requestURL = @"/v2/music/search";
     request.requestParameters = @{@"q":@"周杰伦"};
     [request startWithRequestSuccessBlock:^(DZBaseRequest *request) {
@@ -46,7 +47,7 @@
 
 - (IBAction)sendUploadRequest:(id)sender {
     DZBaseRequest *request = [DZBaseRequest new];
-    request.baseURL = @"http://www.oschina.net";
+    request.requestBaseURL = @"http://www.oschina.net";
     request.requestURL = @"/action/api/portrait_update";
     request.requestMethod = DZRequestMethodPOST;
     request.responseSerializerType = DZResponseSerializerTypeHTTP;

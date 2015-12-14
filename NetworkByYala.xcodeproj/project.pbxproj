@@ -14,6 +14,8 @@
 		8D7730931C1E7EF700843011 /* DoubanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7730921C1E7EF700843011 /* DoubanViewController.m */; };
 		8D7730961C1E7F1300843011 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7730951C1E7F1300843011 /* ResultViewController.m */; };
 		8D7730981C1E9B0400843011 /* meinv.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8D7730971C1E9B0400843011 /* meinv.jpeg */; };
+		8D77309B1C1EA44A00843011 /* DoubanRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D77309A1C1EA44A00843011 /* DoubanRequest.m */; };
+		8D7B7C261C1EAA42005977B2 /* DoubanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B7C251C1EAA42005977B2 /* DoubanCell.m */; };
 		8D9FBE281C16EED30077A9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE271C16EED30077A9B4 /* main.m */; };
 		8D9FBE2B1C16EED30077A9B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2A1C16EED30077A9B4 /* AppDelegate.m */; };
 		8D9FBE311C16EED30077A9B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2F1C16EED30077A9B4 /* Main.storyboard */; };
@@ -39,6 +41,10 @@
 		8D7730941C1E7F1300843011 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
 		8D7730951C1E7F1300843011 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
 		8D7730971C1E9B0400843011 /* meinv.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meinv.jpeg; sourceTree = "<group>"; };
+		8D7730991C1EA44A00843011 /* DoubanRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanRequest.h; sourceTree = "<group>"; };
+		8D77309A1C1EA44A00843011 /* DoubanRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanRequest.m; sourceTree = "<group>"; };
+		8D7B7C241C1EAA42005977B2 /* DoubanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanCell.h; sourceTree = "<group>"; };
+		8D7B7C251C1EAA42005977B2 /* DoubanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanCell.m; sourceTree = "<group>"; };
 		8D81D3C01C16F0A000BB89D2 /* NetworkByYala-PCH.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetworkByYala-PCH.pch"; sourceTree = "<group>"; };
 		8D9FBE231C16EED30077A9B4 /* NetworkByYala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkByYala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9FBE271C16EED30077A9B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,6 +99,10 @@
 			children = (
 				8D7730911C1E7EF700843011 /* DoubanViewController.h */,
 				8D7730921C1E7EF700843011 /* DoubanViewController.m */,
+				8D7730991C1EA44A00843011 /* DoubanRequest.h */,
+				8D77309A1C1EA44A00843011 /* DoubanRequest.m */,
+				8D7B7C241C1EAA42005977B2 /* DoubanCell.h */,
+				8D7B7C251C1EAA42005977B2 /* DoubanCell.m */,
 			);
 			name = Douban;
 			sourceTree = "<group>";
@@ -300,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D77309B1C1EA44A00843011 /* DoubanRequest.m in Sources */,
 				8D17BBFE1C1D2A00000A3140 /* DZCacheRequest.m in Sources */,
 				8D7730931C1E7EF700843011 /* DoubanViewController.m in Sources */,
 				8DE1C6FC1C1AE0AB00D3F99F /* DZBaseRequest.m in Sources */,
@@ -307,6 +318,7 @@
 				8D77308F1C1E7E4200843011 /* ApiViewController.m in Sources */,
 				8D9FBE281C16EED30077A9B4 /* main.m in Sources */,
 				8DE1C7011C1AED3300D3F99F /* DZRequestManager.m in Sources */,
+				8D7B7C261C1EAA42005977B2 /* DoubanCell.m in Sources */,
 				8D0DF24D1C1C3A5B00B54434 /* DZRequestTool.m in Sources */,
 				8D7730961C1E7F1300843011 /* ResultViewController.m in Sources */,
 			);

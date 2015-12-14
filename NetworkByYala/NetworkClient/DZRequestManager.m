@@ -7,9 +7,6 @@
 //
 
 #import "DZRequestManager.h"
-#import <AFNetworking.h>
-#import "DZRequestTool.h"
-#import <AFNetworkActivityIndicatorManager.h>
 
 #define DZ_HTTP_COOKIE_KEY @"DZHTTPCookieKey"
 
@@ -49,10 +46,10 @@ NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
         return request.requestURL;
     }
     
-    if ([request.baseURL hasPrefix:@"http"]) {
-        return [NSString stringWithFormat:@"%@%@", request.baseURL, request.requestURL];
+    if ([request.requestBaseURL hasPrefix:@"http"]) {
+        return [NSString stringWithFormat:@"%@%@", request.requestBaseURL, request.requestURL];
     } else {
-        DZDebugLog(@"未配置好请求URL base: %@ requestURL: %@", request.baseURL, request.requestURL);
+        DZDebugLog(@"未配置好请求URL base: %@ requestURL: %@", request.requestBaseURL, request.requestURL);
         return @"";
     }
 }
@@ -71,6 +68,9 @@ NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
 
 - (void)loadCookies {
     id cookieData = [[NSUserDefaults standardUserDefaults] objectForKey:DZ_HTTP_COOKIE_KEY];
+    if (!cookieData) {
+        return;
+    }
     NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:cookieData];
     if ([cookies isKindOfClass:[NSArray class]] && cookies.count > 0) {
         NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -103,7 +103,7 @@ NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
         
         [request requestCompleteSuccess];
     }
-    [request clearRequestBlock];
+//    [request clearRequestBlock];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestDidFinishNotification object:request];

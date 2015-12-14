@@ -65,8 +65,11 @@ typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
 
 @property (nonatomic, strong) NSURLSessionDataTask *task;
 
+@property (nonatomic, assign, readonly) BOOL requesting;
+
 //------------------处理返回值的方式----------------------
 // block
+// `requestStartBlock`should not call `start`
 @property (nonatomic, copy) void(^requestStartBlock)(DZBaseRequest *);
 
 @property (nonatomic, copy) void (^uploadProgress)(NSProgress *progress);
@@ -87,7 +90,7 @@ typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
  *
  */
 // default is `DZ_ENVIRONMENT`, `DZ_ENVIRONMENT` configured in config.h, or set special value
-@property (nonatomic, copy) NSString *baseURL;
+@property (nonatomic, copy) NSString *requestBaseURL;
 
 // default is ``
 @property (nonatomic, copy) NSString *requestURL;
@@ -130,7 +133,7 @@ typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
 - (void)requestCompleteFailure;
 
 // set `requestStartBlock`, `requestSuccessBlock`, `requestFailureBlock` to nil
-- (void)clearRequestBlock;
+//- (void)clearRequestBlock;
 
 
 @end

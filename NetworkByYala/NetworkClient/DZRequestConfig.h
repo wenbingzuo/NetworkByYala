@@ -9,6 +9,10 @@
 #ifndef DZRequestConfig_h
 #define DZRequestConfig_h
 
+#import <AFNetworking.h>
+#import "DZRequestTool.h"
+#import <AFNetworkActivityIndicatorManager.h>
+
 /**
  *  基类URL的定义
  */

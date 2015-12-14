@@ -9,7 +9,6 @@
 #ifndef NetworkByYala_PCH_pch
 #define NetworkByYala_PCH_pch
 
-#import <AFNetworking.h>
 #import "DZRequest.h"
 
 

@@ -11,12 +11,15 @@
 @interface DZCacheRequest : DZBaseRequest
 
 // flag - whether load data from cache. default `YES`
-@property (nonatomic, assign) BOOL loadCache;
+@property (nonatomic, assign) BOOL useCache;
 
 // cache data
 @property (nonatomic, strong, readonly) id cacheData;
 
 // cache time interval, origin `60` second
 @property (nonatomic, assign) NSTimeInterval cacheTimeInterval;
+
+// start ignore cache
+- (void)startWithoutCache;
 
 @end
