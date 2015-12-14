@@ -23,8 +23,8 @@
 - (WeiboCacheRequest *)request {
     if (!_request) {
         _request = [WeiboCacheRequest new];
-        _request.baseURL = @"https://api-menke.dev.joinmind.org";
-        _request.requestURL = @"/v1/user/getProfile";
+        _request.baseURL = @"http://api.douban.com/";
+        _request.requestURL = @"/v2/music/search";
         _request.responseSerializerType = DZResponseSerializerTypeJSON;
         [_request setRequestSuccessBlock:^(DZBaseRequest *request) {
             DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
@@ -40,8 +40,9 @@
     [super viewDidLoad];
     
     
+    __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self headerRefresh];
+        [weakSelf headerRefresh];
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotification:) name:DZRequestDidFinishNotification object:nil];

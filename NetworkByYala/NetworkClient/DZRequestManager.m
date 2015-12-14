@@ -186,6 +186,8 @@
         default:
             break;
     }
+    self.sessionManager.requestSerializer.timeoutInterval = request.requestTimeoutInterval;
+    
     DZResponseSerializerType responseSerializerType = request.responseSerializerType;
     switch (responseSerializerType) {
         case DZResponseSerializerTypeJSON:
@@ -197,7 +199,7 @@
         default:
             break;
     }
-    self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", @"application/json", nil];
+    self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", @"text/plain", @"text/json", @"text/javascript", @"image/png", @"image/jpeg", @"application/json", nil];
     
     // 处理请求
     DZRequestMethod requestMethod = request.requestMethod;
@@ -218,7 +220,7 @@
         {
             if ([request constructionBodyBlock]) {
                 task = [self.sessionManager POST:url parameters:params constructingBodyWithBlock:[request constructionBodyBlock] progress:^(NSProgress * _Nonnull uploadProgress) {
-                    DZDebugLog(@"上传进度：%f", uploadProgress.fractionCompleted);
+                    DZDebugLog(@"upload progress：%f", uploadProgress.fractionCompleted);
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     [self handleReponseResult:task response:responseObject error:nil];
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

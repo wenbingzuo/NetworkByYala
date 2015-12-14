@@ -93,6 +93,9 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 // default is ``
 @property (nonatomic, copy) NSString *requestURL;
 
+// default is 20
+@property (nonatomic, assign) NSTimeInterval requestTimeoutInterval;
+
 // default is `DZRequestMethodGET`
 @property (nonatomic, assign) DZRequestMethod requestMethod;
 

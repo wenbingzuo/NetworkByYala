@@ -15,6 +15,7 @@
 		8D17BBFE1C1D2A00000A3140 /* DZCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D17BBFD1C1D2A00000A3140 /* DZCacheRequest.m */; };
 		8D7730811C1E65C200843011 /* WeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7730801C1E65C200843011 /* WeiboViewController.m */; };
 		8D7730851C1E671300843011 /* WeiboCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7730841C1E671300843011 /* WeiboCacheRequest.m */; };
+		8D7730881C1E754600843011 /* WeiboCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7730871C1E754600843011 /* WeiboCell.m */; };
 		8D9FBE281C16EED30077A9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE271C16EED30077A9B4 /* main.m */; };
 		8D9FBE2B1C16EED30077A9B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2A1C16EED30077A9B4 /* AppDelegate.m */; };
 		8D9FBE2E1C16EED30077A9B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2D1C16EED30077A9B4 /* ViewController.m */; };
@@ -44,6 +45,8 @@
 		8D7730801C1E65C200843011 /* WeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboViewController.m; sourceTree = "<group>"; };
 		8D7730831C1E671300843011 /* WeiboCacheRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboCacheRequest.h; sourceTree = "<group>"; };
 		8D7730841C1E671300843011 /* WeiboCacheRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboCacheRequest.m; sourceTree = "<group>"; };
+		8D7730861C1E754600843011 /* WeiboCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboCell.h; sourceTree = "<group>"; };
+		8D7730871C1E754600843011 /* WeiboCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboCell.m; sourceTree = "<group>"; };
 		8D81D3C01C16F0A000BB89D2 /* NetworkByYala-PCH.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetworkByYala-PCH.pch"; sourceTree = "<group>"; };
 		8D9FBE231C16EED30077A9B4 /* NetworkByYala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkByYala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9FBE271C16EED30077A9B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -91,6 +94,8 @@
 				8D7730801C1E65C200843011 /* WeiboViewController.m */,
 				8D7730831C1E671300843011 /* WeiboCacheRequest.h */,
 				8D7730841C1E671300843011 /* WeiboCacheRequest.m */,
+				8D7730861C1E754600843011 /* WeiboCell.h */,
+				8D7730871C1E754600843011 /* WeiboCell.m */,
 			);
 			name = Weibo;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D17BBFE1C1D2A00000A3140 /* DZCacheRequest.m in Sources */,
+				8D7730881C1E754600843011 /* WeiboCell.m in Sources */,
 				8DE1C6FC1C1AE0AB00D3F99F /* DZBaseRequest.m in Sources */,
 				8D9FBE2E1C16EED30077A9B4 /* ViewController.m in Sources */,
 				8D0DF2421C1BDEEE00B54434 /* DZTestPost.m in Sources */,
@@ -430,7 +436,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NetworkByYala/Resources/NetworkByYala-PCH.pch";
 				INFOPLIST_FILE = NetworkByYala/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = joinmind.NetworkByYala;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,7 +451,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NetworkByYala/Resources/NetworkByYala-PCH.pch";
 				INFOPLIST_FILE = NetworkByYala/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = joinmind.NetworkByYala;
 				PRODUCT_NAME = "$(TARGET_NAME)";

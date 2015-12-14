@@ -20,6 +20,7 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.fin
     if (self) {
         self.baseURL = DZ_ENVIRONMENT;
         self.requestURL = @"";
+        self.requestTimeoutInterval = 20;
         self.requestMethod = DZRequestMethodGET;
         self.requestParameters = nil;
         self.requestSerializerType = DZRequestSerializerTypeJSON;
