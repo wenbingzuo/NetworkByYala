@@ -42,7 +42,7 @@
     NSError *error = nil;
     [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
     if (error) {
-        DZDebugLog(@"创建缓存目录失败:%@", error.localizedDescription);
+        DZDebugLog(@"error in creating cache folder:%@", error.localizedDescription);
     } else {
         [DZRequestTool addDoNotBackupAttribute:path];
     }
@@ -58,7 +58,7 @@
             NSError *error = nil;
             [fileManager removeItemAtPath:path error:&error];
             if (error) {
-                DZDebugLog(@"移除文件失败：%@", error.localizedDescription);
+                DZDebugLog(@"error in removing file：%@", error.localizedDescription);
             }
             [self createPath:path];
         }
