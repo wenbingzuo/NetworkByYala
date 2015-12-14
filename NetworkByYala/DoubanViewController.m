@@ -29,7 +29,8 @@
         _request.requestBaseURL = @"http://api.douban.com/";
         _request.requestURL = @"/v2/music/search";
         _request.requestParameters = @{@"q":@"周杰伦"};
-        
+        _request.cacheTimeInterval = 10;
+        _request.switching = NO;
         __weak typeof(self) weakSelf = self;
         [_request setRequestSuccessBlock:^(DZBaseRequest *request) {
             NSArray *musics = request.responseObject[@"musics"];
@@ -57,7 +58,10 @@
 }
 
 - (void)loadData {
-    [self.request startWithoutCache];
+//    [self.request startNotToggleWillStartTag];
+    if (self.request.switching == NO) {
+        [self.request startWithoutCache];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -65,6 +69,7 @@
     __weak typeof(self) weakSelf = self;
     [self.request setRequestStartBlock:^(DZBaseRequest *request) {
         [weakSelf.tableView.mj_header beginRefreshing];
+        weakSelf.request.switching = YES;
     }];
     [self.request start];
 }

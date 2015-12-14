@@ -10,5 +10,8 @@
 
 @implementation DoubanRequest
 
+- (void)startNotToggleWillStartTag {
+    [[DZRequestManager shareManager] startRequest:self];
+}
 
 @end

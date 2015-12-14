@@ -10,4 +10,11 @@
 
 @interface DoubanRequest : DZCacheRequest
 
+@property (nonatomic, assign) BOOL switching;
+
+
+- (void)startNotToggleWillStartTag;
+
+
+
 @end

@@ -19,7 +19,7 @@
 // cache time interval, origin `60` second
 @property (nonatomic, assign) NSTimeInterval cacheTimeInterval;
 
-// start ignore cache
+// start ignore cache. `[super start]`will toggle
 - (void)startWithoutCache;
 
 @end
