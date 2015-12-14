@@ -30,3 +30,5 @@ typedef NS_ENUM(NSInteger, DZRequestReachabilityStatus) {
 - (void)startNetworkStateMonitoring;
 
 @end
+
+FOUNDATION_EXPORT NSString * const DZRequestOutOfNetwork;

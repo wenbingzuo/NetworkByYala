@@ -7,18 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D0DF23F1C1BDE0400B54434 /* DZTestGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF23E1C1BDE0400B54434 /* DZTestGet.m */; };
-		8D0DF2421C1BDEEE00B54434 /* DZTestPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF2411C1BDEEE00B54434 /* DZTestPost.m */; };
 		8D0DF2471C1C31FF00B54434 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8D0DF2461C1C31FF00B54434 /* images.jpeg */; };
-		8D0DF24A1C1C34CB00B54434 /* DZTestUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF2491C1C34CB00B54434 /* DZTestUpload.m */; };
 		8D0DF24D1C1C3A5B00B54434 /* DZRequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DF24C1C1C3A5B00B54434 /* DZRequestTool.m */; };
 		8D17BBFE1C1D2A00000A3140 /* DZCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D17BBFD1C1D2A00000A3140 /* DZCacheRequest.m */; };
-		8D7730811C1E65C200843011 /* WeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7730801C1E65C200843011 /* WeiboViewController.m */; };
-		8D7730851C1E671300843011 /* WeiboCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7730841C1E671300843011 /* WeiboCacheRequest.m */; };
-		8D7730881C1E754600843011 /* WeiboCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7730871C1E754600843011 /* WeiboCell.m */; };
+		8D77308F1C1E7E4200843011 /* ApiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D77308E1C1E7E4200843011 /* ApiViewController.m */; };
+		8D7730931C1E7EF700843011 /* DoubanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7730921C1E7EF700843011 /* DoubanViewController.m */; };
+		8D7730961C1E7F1300843011 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7730951C1E7F1300843011 /* ResultViewController.m */; };
+		8D7730981C1E9B0400843011 /* meinv.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8D7730971C1E9B0400843011 /* meinv.jpeg */; };
 		8D9FBE281C16EED30077A9B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE271C16EED30077A9B4 /* main.m */; };
 		8D9FBE2B1C16EED30077A9B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2A1C16EED30077A9B4 /* AppDelegate.m */; };
-		8D9FBE2E1C16EED30077A9B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2D1C16EED30077A9B4 /* ViewController.m */; };
 		8D9FBE311C16EED30077A9B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D9FBE2F1C16EED30077A9B4 /* Main.storyboard */; };
 		8D9FBE331C16EED30077A9B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D9FBE321C16EED30077A9B4 /* Assets.xcassets */; };
 		8D9FBE361C16EED30077A9B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D9FBE341C16EED30077A9B4 /* LaunchScreen.storyboard */; };
@@ -30,30 +27,23 @@
 /* Begin PBXFileReference section */
 		0F278F67804B911D80F96077 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		198AAFB0356B4ECCFCB9B90C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D0DF23D1C1BDE0400B54434 /* DZTestGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTestGet.h; sourceTree = "<group>"; };
-		8D0DF23E1C1BDE0400B54434 /* DZTestGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTestGet.m; sourceTree = "<group>"; };
-		8D0DF2401C1BDEEE00B54434 /* DZTestPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTestPost.h; sourceTree = "<group>"; };
-		8D0DF2411C1BDEEE00B54434 /* DZTestPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTestPost.m; sourceTree = "<group>"; };
 		8D0DF2461C1C31FF00B54434 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
-		8D0DF2481C1C34CB00B54434 /* DZTestUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTestUpload.h; sourceTree = "<group>"; };
-		8D0DF2491C1C34CB00B54434 /* DZTestUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTestUpload.m; sourceTree = "<group>"; };
 		8D0DF24B1C1C3A5B00B54434 /* DZRequestTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRequestTool.h; sourceTree = "<group>"; };
 		8D0DF24C1C1C3A5B00B54434 /* DZRequestTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRequestTool.m; sourceTree = "<group>"; };
 		8D17BBFC1C1D2A00000A3140 /* DZCacheRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZCacheRequest.h; sourceTree = "<group>"; };
 		8D17BBFD1C1D2A00000A3140 /* DZCacheRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZCacheRequest.m; sourceTree = "<group>"; };
-		8D77307F1C1E65C200843011 /* WeiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboViewController.h; sourceTree = "<group>"; };
-		8D7730801C1E65C200843011 /* WeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboViewController.m; sourceTree = "<group>"; };
-		8D7730831C1E671300843011 /* WeiboCacheRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboCacheRequest.h; sourceTree = "<group>"; };
-		8D7730841C1E671300843011 /* WeiboCacheRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboCacheRequest.m; sourceTree = "<group>"; };
-		8D7730861C1E754600843011 /* WeiboCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboCell.h; sourceTree = "<group>"; };
-		8D7730871C1E754600843011 /* WeiboCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboCell.m; sourceTree = "<group>"; };
+		8D77308D1C1E7E4200843011 /* ApiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiViewController.h; sourceTree = "<group>"; };
+		8D77308E1C1E7E4200843011 /* ApiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiViewController.m; sourceTree = "<group>"; };
+		8D7730911C1E7EF700843011 /* DoubanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanViewController.h; sourceTree = "<group>"; };
+		8D7730921C1E7EF700843011 /* DoubanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanViewController.m; sourceTree = "<group>"; };
+		8D7730941C1E7F1300843011 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
+		8D7730951C1E7F1300843011 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
+		8D7730971C1E9B0400843011 /* meinv.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meinv.jpeg; sourceTree = "<group>"; };
 		8D81D3C01C16F0A000BB89D2 /* NetworkByYala-PCH.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetworkByYala-PCH.pch"; sourceTree = "<group>"; };
 		8D9FBE231C16EED30077A9B4 /* NetworkByYala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkByYala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9FBE271C16EED30077A9B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D9FBE291C16EED30077A9B4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8D9FBE2A1C16EED30077A9B4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8D9FBE2C1C16EED30077A9B4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8D9FBE2D1C16EED30077A9B4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8D9FBE301C16EED30077A9B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D9FBE321C16EED30077A9B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D9FBE351C16EED30077A9B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,17 +77,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8D7730821C1E65D200843011 /* Weibo */ = {
+		8D7730891C1E7D7500843011 /* NormalUse */ = {
 			isa = PBXGroup;
 			children = (
-				8D77307F1C1E65C200843011 /* WeiboViewController.h */,
-				8D7730801C1E65C200843011 /* WeiboViewController.m */,
-				8D7730831C1E671300843011 /* WeiboCacheRequest.h */,
-				8D7730841C1E671300843011 /* WeiboCacheRequest.m */,
-				8D7730861C1E754600843011 /* WeiboCell.h */,
-				8D7730871C1E754600843011 /* WeiboCell.m */,
+				8D77308D1C1E7E4200843011 /* ApiViewController.h */,
+				8D77308E1C1E7E4200843011 /* ApiViewController.m */,
+				8D7730941C1E7F1300843011 /* ResultViewController.h */,
+				8D7730951C1E7F1300843011 /* ResultViewController.m */,
 			);
-			name = Weibo;
+			name = NormalUse;
+			sourceTree = "<group>";
+		};
+		8D7730901C1E7EC500843011 /* Douban */ = {
+			isa = PBXGroup;
+			children = (
+				8D7730911C1E7EF700843011 /* DoubanViewController.h */,
+				8D7730921C1E7EF700843011 /* DoubanViewController.m */,
+			);
+			name = Douban;
 			sourceTree = "<group>";
 		};
 		8D81D3BE1C16F07900BB89D2 /* NetworkClient */ = {
@@ -148,17 +145,8 @@
 			children = (
 				8D81D3BE1C16F07900BB89D2 /* NetworkClient */,
 				8D81D3BF1C16F07900BB89D2 /* Resources */,
-				8D9FBE291C16EED30077A9B4 /* AppDelegate.h */,
-				8D9FBE2A1C16EED30077A9B4 /* AppDelegate.m */,
-				8D9FBE2C1C16EED30077A9B4 /* ViewController.h */,
-				8D9FBE2D1C16EED30077A9B4 /* ViewController.m */,
-				8D0DF23D1C1BDE0400B54434 /* DZTestGet.h */,
-				8D0DF23E1C1BDE0400B54434 /* DZTestGet.m */,
-				8D0DF2401C1BDEEE00B54434 /* DZTestPost.h */,
-				8D0DF2411C1BDEEE00B54434 /* DZTestPost.m */,
-				8D0DF2481C1C34CB00B54434 /* DZTestUpload.h */,
-				8D0DF2491C1C34CB00B54434 /* DZTestUpload.m */,
-				8D7730821C1E65D200843011 /* Weibo */,
+				8D7730891C1E7D7500843011 /* NormalUse */,
+				8D7730901C1E7EC500843011 /* Douban */,
 				8D9FBE2F1C16EED30077A9B4 /* Main.storyboard */,
 				8D9FBE321C16EED30077A9B4 /* Assets.xcassets */,
 				8D9FBE341C16EED30077A9B4 /* LaunchScreen.storyboard */,
@@ -171,7 +159,10 @@
 		8D9FBE261C16EED30077A9B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8D9FBE291C16EED30077A9B4 /* AppDelegate.h */,
+				8D9FBE2A1C16EED30077A9B4 /* AppDelegate.m */,
 				8D0DF2461C1C31FF00B54434 /* images.jpeg */,
+				8D7730971C1E9B0400843011 /* meinv.jpeg */,
 				8D9FBE271C16EED30077A9B4 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -247,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D9FBE361C16EED30077A9B4 /* LaunchScreen.storyboard in Resources */,
+				8D7730981C1E9B0400843011 /* meinv.jpeg in Resources */,
 				8D0DF2471C1C31FF00B54434 /* images.jpeg in Resources */,
 				8D9FBE331C16EED30077A9B4 /* Assets.xcassets in Resources */,
 				8D9FBE311C16EED30077A9B4 /* Main.storyboard in Resources */,
@@ -309,18 +301,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D17BBFE1C1D2A00000A3140 /* DZCacheRequest.m in Sources */,
-				8D7730881C1E754600843011 /* WeiboCell.m in Sources */,
+				8D7730931C1E7EF700843011 /* DoubanViewController.m in Sources */,
 				8DE1C6FC1C1AE0AB00D3F99F /* DZBaseRequest.m in Sources */,
-				8D9FBE2E1C16EED30077A9B4 /* ViewController.m in Sources */,
-				8D0DF2421C1BDEEE00B54434 /* DZTestPost.m in Sources */,
-				8D0DF23F1C1BDE0400B54434 /* DZTestGet.m in Sources */,
-				8D7730851C1E671300843011 /* WeiboCacheRequest.m in Sources */,
-				8D7730811C1E65C200843011 /* WeiboViewController.m in Sources */,
 				8D9FBE2B1C16EED30077A9B4 /* AppDelegate.m in Sources */,
+				8D77308F1C1E7E4200843011 /* ApiViewController.m in Sources */,
 				8D9FBE281C16EED30077A9B4 /* main.m in Sources */,
 				8DE1C7011C1AED3300D3F99F /* DZRequestManager.m in Sources */,
-				8D0DF24A1C1C34CB00B54434 /* DZTestUpload.m in Sources */,
 				8D0DF24D1C1C3A5B00B54434 /* DZRequestTool.m in Sources */,
+				8D7730961C1E7F1300843011 /* ResultViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

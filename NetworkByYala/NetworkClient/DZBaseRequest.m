@@ -10,8 +10,8 @@
 #import "DZRequestConfig.h"
 #import "DZRequestManager.h"
 
-NSString * const DZRequestWillStartNotification = @"com.forever.HTTP.request.start";
-NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.finish";
+NSString * const DZRequestWillStartNotification = @"com.forever.request.start";
+NSString * const DZRequestDidFinishNotification = @"com.forever.request.finish";
 
 @implementation DZBaseRequest
 
@@ -43,6 +43,8 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.fin
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:DZRequestWillStartNotification object:self];
     });
+    
+    [self requestWillStart];
 }
 
 - (void)start {
@@ -64,7 +66,15 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.fin
     [[DZRequestManager shareManager] cancelRequest:self];
 }
 
+- (void)requestWillStart {
+    
+}
+
 - (void)requestCompleteSuccess {
+    
+}
+
+- (void)requestCompleteFailure {
     
 }
 
@@ -72,6 +82,7 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.fin
     self.requestStartBlock = nil;
     self.requestSuccessBlock = nil;
     self.requestFailureBlock = nil;
+    self.uploadProgress = nil;
 }
 
 - (void)dealloc {

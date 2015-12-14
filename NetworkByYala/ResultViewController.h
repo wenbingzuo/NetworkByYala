@@ -1,5 +1,5 @@
 //
-//  WeiboViewController.h
+//  ResultViewController.h
 //  NetworkByYala
 //
 //  Created by 文兵 左 on 12/14/15.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WeiboViewController : UIViewController
+@interface ResultViewController : UIViewController
+
+@property (nonatomic, strong) id result;
 
 @end

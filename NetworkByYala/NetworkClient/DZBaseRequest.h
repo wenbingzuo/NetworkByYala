@@ -61,8 +61,6 @@ typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
 
 @end
 
-typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
-
 @interface DZBaseRequest : NSObject
 
 @property (nonatomic, strong) NSURLSessionDataTask *task;
@@ -70,6 +68,8 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 //------------------处理返回值的方式----------------------
 // block
 @property (nonatomic, copy) void(^requestStartBlock)(DZBaseRequest *);
+
+@property (nonatomic, copy) void (^uploadProgress)(NSProgress *progress);
 
 @property (nonatomic, copy) void(^requestSuccessBlock)(DZBaseRequest *);
 @property (nonatomic, strong) id responseObject;
@@ -81,7 +81,6 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 @property (nonatomic, weak) id <DZRequestDelegate> delegate;
 
 //-----------------------------------------------------
-
 
 /**
  *  custom properties
@@ -99,7 +98,7 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 // default is `DZRequestMethodGET`
 @property (nonatomic, assign) DZRequestMethod requestMethod;
 
-// default is `nil`
+// default is nil
 @property (nonatomic, strong) id requestParameters;
 
 // default is `DZRequestSerializerTypeJSON`
@@ -108,11 +107,11 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 // default is `DZResponseSerializerTypeJSON`
 @property (nonatomic, assign) DZResponseSerializerType responseSerializerType;
 
-// default is `YES`
+// default is YES
 @property (nonatomic, assign) BOOL useCookies;
 
-// POST upload request such as images, default `nil`
-@property (nonatomic, copy) DZConstructionBlock constructionBodyBlock;
+// POST upload request such as images, default nil
+@property (nonatomic, copy) void (^constructionBodyBlock)(id<AFMultipartFormData>formData);
 
 /**
  *  if overwrite, call super
@@ -121,9 +120,14 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 - (void)startWithRequestSuccessBlock:(void(^)(DZBaseRequest *request))success failureBlock:(void(^)(DZBaseRequest *request))failure;
 - (void)stop;
 
+// toggle when requst start
+- (void)requestWillStart;
 
 // toggle when request success
 - (void)requestCompleteSuccess;
+
+// toggle when request failure
+- (void)requestCompleteFailure;
 
 // set `requestStartBlock`, `requestSuccessBlock`, `requestFailureBlock` to nil
 - (void)clearRequestBlock;

@@ -13,6 +13,8 @@
 
 #define DZ_HTTP_COOKIE_KEY @"DZHTTPCookieKey"
 
+NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
+
 @interface DZRequestManager () <NSXMLParserDelegate>
 
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
@@ -88,6 +90,8 @@
         if ([request.delegate respondsToSelector:@selector(requestDidFailure:)]) {
             [request.delegate requestDidFailure:request];
         }
+        
+        [request requestCompleteFailure];
     } else {
         if (request.requestSuccessBlock) {
             request.requestSuccessBlock(request);
@@ -147,7 +151,7 @@
 #pragma mark - Public
 - (void)startRequest:(DZBaseRequest *)request {
     if (self.reachabilityStatus == DZRequestReachabilityStatusUnknow || self.reachabilityStatus == DZRequestReachabilityStatusNotReachable) {
-        NSError *error = [NSError errorWithDomain:@"com.forever.request.noNetwork" code:999 userInfo:nil];
+        NSError *error = [NSError errorWithDomain:DZRequestOutOfNetwork code:1000 userInfo:nil];
         request.error = error;
         [self requestDidFinishTag:request];
         return;
@@ -199,7 +203,7 @@
         default:
             break;
     }
-    self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", @"text/plain", @"text/json", @"text/javascript", @"image/png", @"image/jpeg", @"application/json", nil];
+    self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/xml", @"text/plain", @"text/json", @"text/javascript", @"image/png", @"image/jpeg", @"application/json", nil];
     
     // 处理请求
     DZRequestMethod requestMethod = request.requestMethod;
@@ -220,7 +224,7 @@
         {
             if ([request constructionBodyBlock]) {
                 task = [self.sessionManager POST:url parameters:params constructingBodyWithBlock:[request constructionBodyBlock] progress:^(NSProgress * _Nonnull uploadProgress) {
-                    DZDebugLog(@"upload progress：%f", uploadProgress.fractionCompleted);
+                    request.uploadProgress(uploadProgress);
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     [self handleReponseResult:task response:responseObject error:nil];
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
