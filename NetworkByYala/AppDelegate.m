@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    DZDebugLog(@"%@", NSHomeDirectory());
     [[DZRequestManager shareManager] startNetworkStateMonitoring];
     return YES;
 }

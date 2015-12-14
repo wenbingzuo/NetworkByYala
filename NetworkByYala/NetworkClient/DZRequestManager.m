@@ -191,8 +191,8 @@
         case DZResponseSerializerTypeJSON:
             self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
             break;
-        case DZResponseSerializerTypeXML:
-            self.sessionManager.responseSerializer = [AFXMLParserResponseSerializer serializer];
+        case DZResponseSerializerTypeHTTP:
+            self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
             break;
         default:
             break;

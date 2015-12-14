@@ -64,15 +64,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvi-ff-Agn">
                                 <rect key="frame" x="102" y="246" width="47" height="30"/>
                                 <state key="normal" title="upload"/>
-                                <connections>
-                                    <action selector="sendDownloadRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Zq-sH-5Ow"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Boq-mj-lUv">
                                 <rect key="frame" x="105" y="200" width="40" height="30"/>
                                 <state key="normal" title="POST"/>
                                 <connections>
-                                    <action selector="sendPOSTRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OcO-Im-m01"/>
+                                    <action selector="XMLPostRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sTq-pL-ky5"/>
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="spf-gD-bHx">
@@ -82,22 +79,16 @@
                                 <rect key="frame" x="51" y="200" width="30" height="30"/>
                                 <state key="normal" title="GET"/>
                                 <connections>
-                                    <action selector="sendGETRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="azt-Z2-340"/>
+                                    <action selector="XMLGetRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8oJ-Ek-QLN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFZ-K4-psq">
                                 <rect key="frame" x="216" y="200" width="55" height="30"/>
                                 <state key="normal" title="DELETE"/>
-                                <connections>
-                                    <action selector="sendDELETERequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q8v-ib-V4m"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHw-gL-UOY">
                                 <rect key="frame" x="161" y="200" width="30" height="30"/>
                                 <state key="normal" title="PUT"/>
-                                <connections>
-                                    <action selector="sendPUTRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="upI-si-bgW"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XML" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWs-Se-GVR">
                                 <rect key="frame" x="22" y="163" width="35" height="21"/>

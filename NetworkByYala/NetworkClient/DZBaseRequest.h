@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, DZRequestMethod) {
  */
 typedef NS_ENUM(NSInteger, DZRequestSerializerType) {
     /**
-     *  content-type: application/x-www-form-urlencoded
+     *  content-type: application/x-www-form-urlencoded not json type
      */
     DZRequestSerializerTypeForm = 0,
     /**
@@ -42,13 +42,13 @@ typedef NS_ENUM(NSInteger, DZRequestSerializerType) {
  */
 typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
     /**
+     *  get the origin data from server
+     */
+    DZResponseSerializerTypeHTTP= 0,
+    /**
      *  JSON from server
      */
-    DZResponseSerializerTypeJSON = 0,
-    /**
-     *  XML from server
-     */
-    DZResponseSerializerTypeXML
+    DZResponseSerializerTypeJSON
 };
 
 @class DZBaseRequest;
@@ -122,6 +122,7 @@ typedef void(^DZConstructionBlock)(id <AFMultipartFormData> formData);
 // toggle when request success
 - (void)requestCompleteSuccess;
 
+// set `requestStartBlock`, `requestSuccessBlock`, `requestFailureBlock` to nil
 - (void)clearRequestBlock;
 
 

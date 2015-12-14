@@ -17,6 +17,15 @@
 
 @implementation DZCacheRequest
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.loadCache = YES;
+        self.cacheTimeInterval = 60;
+    }
+    return self;
+}
+
 - (id)cacheData {
     if (!_cacheData) {
         NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -83,6 +92,17 @@
     return path;
 }
 
+- (NSInteger)cacheFileTimeInterval:(NSString *)path {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error = nil;
+    NSDictionary *attributes = [fileManager attributesOfItemAtPath:path error:&error];
+    if (error) {
+        return -1;
+    }
+    NSTimeInterval timeInterval = -[[attributes fileModificationDate] timeIntervalSinceNow];
+    return timeInterval;
+}
+
 - (void)start {
     if (!self.loadCache) {
         [super start];
@@ -91,6 +111,14 @@
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:[self cacheFilePath]]) {
+        [super start];
+        return;
+    }
+    
+    
+    NSTimeInterval fileTimeInterval = [self cacheFileTimeInterval:[self cacheFilePath]];
+    NSTimeInterval cacheTimeInterval = self.cacheTimeInterval;
+    if (cacheTimeInterval <= 0 || cacheTimeInterval < fileTimeInterval) {
         [super start];
         return;
     }

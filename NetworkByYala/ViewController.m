@@ -32,10 +32,12 @@
     DZTestGet *getTest = [DZTestGet new];
     getTest.baseURL = @"https://api-menke.dev.joinmind.org";
     getTest.requestURL = @"/v1/user/getProfile";
-    
-    getTest.loadCache = YES;
+    getTest.responseSerializerType = DZResponseSerializerTypeHTTP;
+//    getTest.loadCache = YES;
     [getTest setRequestSuccessBlock:^(DZBaseRequest *request) {
         DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
+        NSString *str = [[NSString alloc] initWithData:request.responseObject encoding:NSUTF8StringEncoding];
+        DZDebugLog(@"--> %@", str);
     }];
     [getTest setRequestFailureBlock:^(DZBaseRequest *request) {
         DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
@@ -80,10 +82,13 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     DZTestGet *getTest = [DZTestGet new];
     
-    getTest.baseURL = @"https://api-menke.dev.joinmind.org";
-    getTest.requestURL = @"/v1/user/getProfile";
+    getTest.baseURL = @"http://www.oschina.net";
+    getTest.requestURL = @"/action/api/my_information";
     
-    getTest.loadCache = NO;
+//    getTest.loadCache = NO;
+    getTest.requestParameters = @{@"uid":@"2544566"};
+    getTest.responseSerializerType = DZResponseSerializerTypeHTTP;
+    getTest.requestSerializerType = DZRequestSerializerTypeForm;
     
     [getTest setRequestSuccessBlock:^(DZBaseRequest *request) {
         DZDebugLog(@"%@ -- %@", request.responseObject, request.error.localizedDescription);
@@ -95,18 +100,27 @@
     [getTest start];
 }
 
+// XML
+- (IBAction)XMLGetRequest:(id)sender {
+    DZTestGet *xmlGet = [DZTestGet new];
+    xmlGet.baseURL = @"http://www.oschina.net";
+    xmlGet.requestURL = @"/action/api/my_information";
+    xmlGet.requestParameters = @{@"uid":@"2544566"};
+    
+    xmlGet.requestSerializerType = DZRequestSerializerTypeForm;
+    xmlGet.responseSerializerType = DZResponseSerializerTypeHTTP;
+    [xmlGet startWithRequestSuccessBlock:^(DZBaseRequest *request) {
+        NSString *str = [[NSString alloc] initWithData:request.responseObject encoding:NSUTF8StringEncoding];
+        DZDebugLog(@"%@", str);
+        
+    } failureBlock:^(DZBaseRequest *request) {
+        DZDebugLog(@"failure");
+    }];
+}
 
-//#pragma mark - DZRequestDelegate
-//- (void)requestDidSuccess:(DZBaseRequest *)request {
-//    DZDebugMethod();
-//}
-//
-//- (void)requestDidFailure:(DZBaseRequest *)request {
-//    DZDebugMethod();
-//}
-//
-//#pragma mark - NSNotification
-//- (void)testNotification:(NSNotification *)notification {
-//    
-//}
+- (IBAction)XMLPostRequest:(id)sender {
+    
+}
+
+
 @end

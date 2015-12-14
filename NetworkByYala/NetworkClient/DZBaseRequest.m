@@ -68,6 +68,7 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.HTTP.request.fin
 }
 
 - (void)clearRequestBlock {
+    self.requestStartBlock = nil;
     self.requestSuccessBlock = nil;
     self.requestFailureBlock = nil;
 }
