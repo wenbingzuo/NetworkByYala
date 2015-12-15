@@ -117,7 +117,7 @@ typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
 @property (nonatomic, copy) void (^constructionBodyBlock)(id<AFMultipartFormData>formData);
 
 /**
- *  if overwrite, call super
+ *  if overwrite, call super or call `startRequest:` in `DZRequestManager`. `start` method invoke the will start tag and begin the request
  */
 - (void)start;
 - (void)startWithRequestSuccessBlock:(void(^)(DZBaseRequest *request))success failureBlock:(void(^)(DZBaseRequest *request))failure;

@@ -58,18 +58,18 @@
 }
 
 - (void)loadData {
-//    [self.request startNotToggleWillStartTag];
-    if (self.request.switching == NO) {
-        [self.request startWithoutCache];
+    if (!self.request.switching) {
+        [self.request startNotToggleWillStartTag];
     }
+    self.request.switching = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     __weak typeof(self) weakSelf = self;
     [self.request setRequestStartBlock:^(DZBaseRequest *request) {
-        [weakSelf.tableView.mj_header beginRefreshing];
         weakSelf.request.switching = YES;
+        [weakSelf.tableView.mj_header beginRefreshing];
     }];
     [self.request start];
 }
