@@ -10,6 +10,10 @@
 
 #define DZ_HTTP_COOKIE_KEY @"DZHTTPCookieKey"
 
+typedef NS_ENUM(NSInteger, DZRequestError) {
+    DZRequestErrorOutOfNetwork = 0
+};
+
 NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
 
 @interface DZRequestManager () <NSXMLParserDelegate>
@@ -88,6 +92,7 @@ NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
 
 #pragma mark - 请求结束处理
 - (void)requestDidFinishTag:(DZBaseRequest *)request {
+    
     if (request.error) {
         if (request.requestFailureBlock) {
             request.requestFailureBlock(request);
@@ -157,7 +162,7 @@ NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
 #pragma mark - Public
 - (void)startRequest:(DZBaseRequest *)request {
     if (self.reachabilityStatus == DZRequestReachabilityStatusUnknow || self.reachabilityStatus == DZRequestReachabilityStatusNotReachable) {
-        NSError *error = [NSError errorWithDomain:DZRequestOutOfNetwork code:1000 userInfo:nil];
+        NSError *error = [NSError errorWithDomain:DZRequestOutOfNetwork code:DZRequestErrorOutOfNetwork userInfo:nil];
         request.error = error;
         [self requestDidFinishTag:request];
         return;
@@ -172,7 +177,7 @@ NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
     NSString *urlCoded = [self configRequestURL:request];
     NSString *url = [urlCoded stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     if (![DZRequestTool validateUrl:url]) {
-        DZDebugLog(@"url错误：%@", url);
+        DZDebugLog(@"error in url format：%@", url);
         return;
     }
     
@@ -180,7 +185,7 @@ NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
     id params = request.requestParameters;
     if (request.requestSerializerType == DZRequestSerializerTypeJSON) {
         if (![NSJSONSerialization isValidJSONObject:params] && params) {
-            DZDebugLog(@"参数json出错：%@", params);
+            DZDebugLog(@"error in JSON parameters：%@", params);
             return;
         }
     }

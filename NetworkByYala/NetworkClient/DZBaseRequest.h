@@ -65,8 +65,6 @@ typedef NS_ENUM(NSInteger, DZResponseSerializerType) {
 
 @property (nonatomic, strong) NSURLSessionDataTask *task;
 
-@property (nonatomic, assign, readonly) BOOL requesting;
-
 //------------------处理返回值的方式----------------------
 // block
 // `requestStartBlock`should not call `start`

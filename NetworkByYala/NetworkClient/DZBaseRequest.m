@@ -15,7 +15,7 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.request.finish";
 
 @interface DZBaseRequest ()
 
-@property (nonatomic, assign) BOOL requesting;
+//@property (nonatomic, assign) BOOL requesting;
 
 @end
 
@@ -24,7 +24,6 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.request.finish";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.requesting = NO;
         self.requestBaseURL = DZ_ENVIRONMENT;
         self.requestURL = @"";
         self.requestTimeoutInterval = 20;
@@ -34,23 +33,8 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.request.finish";
         self.responseSerializerType = DZResponseSerializerTypeJSON;
         self.useCookies = YES;
         self.constructionBodyBlock = nil;
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestWillStartNotification:) name:DZRequestWillStartNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestDidFinishNotification:) name:DZRequestDidFinishNotification object:nil];
     }
     return self;
-}
-
-- (void)requestWillStartNotification:(NSNotification *)notification {
-    if (notification.object == self) {
-        self.requesting = YES;
-    }
-}
-
-- (void)requestDidFinishNotification:(NSNotification *)notification {
-    if (notification.object == self) {
-        self.requesting = NO;
-    }
 }
 
 - (void)requestWillStartTag {
@@ -70,9 +54,6 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.request.finish";
 }
 
 - (void)start {
-    if (self.requesting) {
-        return;
-    }
     [self requestWillStartTag];
     [[DZRequestManager shareManager] startRequest:self];
 }
@@ -111,7 +92,6 @@ NSString * const DZRequestDidFinishNotification = @"com.forever.request.finish";
 //}
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     DZDebugLog(@"%@ dealloc", [self class]);
 }
 @end
