@@ -61,7 +61,7 @@
     request.delegate = self;
     [request setConstructionBodyBlock:^(id<AFMultipartFormData> formData) {
         NSData *data = UIImageJPEGRepresentation([UIImage imageNamed:@"images.jpeg"], 1);
-        [formData appendPartWithFileData:data name:@"portrait" fileName:@"19900000" mimeType:@"image/jpeg"];
+        [formData appendPartWithFileData:data name:@"portrait" fileName:@"645.jpeg" mimeType:@"image/jpeg"];
     }];
     [request start];
 }
