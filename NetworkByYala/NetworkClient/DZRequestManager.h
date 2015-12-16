@@ -21,6 +21,9 @@ typedef NS_ENUM(NSInteger, DZRequestReachabilityStatus) {
 
 + (instancetype)shareManager;
 
+// default 5
+@property (nonatomic, assign) NSInteger maxConcurrentRequestCount;
+
 @property (nonatomic, assign, readonly) DZRequestReachabilityStatus reachabilityStatus;
 
 - (void)startRequest:(DZBaseRequest *)request;

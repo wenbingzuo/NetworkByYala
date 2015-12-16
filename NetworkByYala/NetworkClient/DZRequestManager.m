@@ -31,12 +31,18 @@ NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
     return instance;
 }
 
+#pragma mark - Setter
+- (void)setMaxConcurrentRequestCount:(NSInteger)maxConcurrentRequestCount {
+    self.sessionManager.operationQueue.maxConcurrentOperationCount = maxConcurrentRequestCount;
+}
+
 #pragma mark - Private
 - (instancetype)init {
     self = [super init];
     if (self) {
         self.sessionManager = [AFHTTPSessionManager manager];
         self.requests = [NSMutableDictionary dictionary];
+        self.maxConcurrentRequestCount = 5;
     }
     return self;
 }
@@ -49,7 +55,7 @@ NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
     if ([request.requestBaseURL hasPrefix:@"http"]) {
         return [NSString stringWithFormat:@"%@%@", request.requestBaseURL, request.requestURL];
     } else {
-        DZDebugLog(@"未配置好请求URL base: %@ requestURL: %@", request.requestBaseURL, request.requestURL);
+        DZDebugLog(@"未配置好请求地址 %@ requestURL: %@", request.requestBaseURL, request.requestURL);
         return @"";
     }
 }
