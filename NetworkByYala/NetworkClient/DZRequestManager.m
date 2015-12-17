@@ -159,6 +159,7 @@ NSString * const DZRequestOutOfNetwork = @"com.forever.request.outOfNetwork";
         [self.requests removeObjectForKey:key];
     }
 }
+
 #pragma mark - Public
 - (void)startRequest:(DZBaseRequest *)request {
     if (self.reachabilityStatus == DZRequestReachabilityStatusUnknow || self.reachabilityStatus == DZRequestReachabilityStatusNotReachable) {
